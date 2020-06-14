@@ -1,0 +1,11 @@
+.movie-search-results_wrapper {
+  border: 1px solid black;
+  width: 80vw;
+  margin: auto;
+  margin-top: 4rem;
+}
+
+.movie-table-row:hover {
+  height: 100px;
+  cursor: pointer;
+}
