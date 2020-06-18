@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import React, { useState, useContext } from "react";
+import { MovieContext } from "./MovieListContext/MovieContext";
 import MovieSearchResults from "./MovieSearchResults";
 import { Button } from "@material-ui/core";
 import fetchMovies from "../../Utilities/MovieJsonTransform";
 
 export default function MovieList() {
-  const [movieList, setMovieList] = useState([]);
-  const [movieInputState, setMovieInputState] = useState();
-  const [movieSortColumn, setMovieSortColumn] = useState("year");
-
+  // const [movieList, setMovieList] = useState([]);
+  // const [movieInputState, setMovieInputState] = useState();
+  // const [movieSortColumn, setMovieSortColumn] = useState();
+  const {
+    movieList,
+    setMovieList,
+    movieInputState,
+    setMovieInputState,
+    movieSortColumn,
+    setMovieSortColumn,
+  } = useContext(MovieContext);
   const handleFetch = () => {
     fetchMovies(movieInputState).then((transformedMovies) => {
       setMovieList(transformedMovies);

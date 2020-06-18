@@ -1,51 +1,31 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { MovieContext } from "./MovieListContext/MovieContext";
 import { withStyles } from "@material-ui/core/styles";
-
+import {
+  StyledTableCell,
+  StyledTableRow,
+} from "../../CSS-muitheme/TableStyles";
 import {
   Checkbox,
   TableRow,
   TableHead,
   TableContainer,
-  TableCell,
   TableBody,
   Table,
 } from "@material-ui/core";
+import MovieSearchResultsRendered from "./MovieSearchResultsRendered";
 
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
+export default function MovieSearchResults({ movieList, setMovieSortColumn }) {
+  const toggle = () =>
+    toggleCols === true ? setToggleCols(false) : setToggleCols(true);
+  const { sortMovies, unSortMovies, toggleCols, setToggleCols } = useContext(
+    MovieContext
+  );
+  let sortedMovieList;
+  toggleCols !== true
+    ? (sortedMovieList = movieList?.sort(sortMovies))
+    : (sortedMovieList = movieList?.sort(unSortMovies));
 
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
-
-export default function MovieSearchResults({
-  movieList,
-  movieSortColumn,
-  setMovieSortColumn,
-}) {
-  const sortMovies = (a, b) => {
-    if (movieSortColumn === "year") {
-      return a[movieSortColumn] - b[movieSortColumn];
-    }
-    if (movieSortColumn === "title") {
-      const titleA = a.title.toUpperCase();
-      const titleB = b.title.toUpperCase();
-      return titleA < titleB ? -1 : 1;
-    }
-  };
-
-  const sortedMovieList = movieList?.sort(sortMovies);
   return (
     <TableContainer>
       <Table aria-label="customized table" color="primary">
@@ -53,15 +33,21 @@ export default function MovieSearchResults({
           <TableRow>
             <StyledTableCell align="left">Select</StyledTableCell>
             <StyledTableCell
+              className="interactive-title"
               onClick={() => {
+                console.log(toggleCols);
+                toggle();
                 setMovieSortColumn("title");
               }}
             >
               Title
             </StyledTableCell>
             <StyledTableCell
+              className="interactive-title"
               align="center"
               onClick={() => {
+                console.log(toggleCols);
+                toggle();
                 setMovieSortColumn("year");
               }}
             >
@@ -86,6 +72,11 @@ export default function MovieSearchResults({
                 <StyledTableCell align="center">{movie.year}</StyledTableCell>
                 <StyledTableCell align="center">{movie.type}</StyledTableCell>
               </StyledTableRow>
+              // <MovieSearchResultsRendered
+              //   key={movie.id}
+              //   {...sortedMovieList}
+              //   Checkbox={Checkbox}
+              // />
             );
           })}
         </TableBody>

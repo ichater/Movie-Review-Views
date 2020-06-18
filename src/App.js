@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./CSS/App.css";
-import MovieList from "./Components/MovieList/MovieSearch";
+import MainMovieComponentRenderer from "./Components/MovieList/MainMovieComponentRenderer";
 import UserList from "./Components/User/UserList";
 import CreateUser from "./Components/User/CreateUser";
 import Navbar from "./Components/NavBar/Navbar";
@@ -18,7 +18,7 @@ function App() {
 
       <br />
       {/* <Route path="/" exact component={Navbar} /> */}
-      <Route path="/moviesearch" exact component={MovieList} />
+      <Route path="/moviesearch" exact component={MainMovieComponentRenderer} />
       <Route path="/users" exact component={UserList} />
       <Route path="/user/add" exact component={CreateUser} />
       <Route path="/signin" exact component={LogIn} />
