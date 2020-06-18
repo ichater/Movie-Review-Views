@@ -9,3 +9,23 @@
   height: 100px;
   cursor: pointer;
 }
+
+.movie-title-poster img {
+  display: none;
+}
+
+.movie-table-row:hover .movie-title-poster img {
+  display: block;
+  height: 12rem;
+}
+
+.movie-table-row:hover .movie-title-poster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.movie-table-row h3 {
+  display: flex;
+  /* justify-content: center; */
+  align-self: center;
+}

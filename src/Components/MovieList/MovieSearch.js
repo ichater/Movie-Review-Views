@@ -1,49 +1,49 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+// import axios from "axios";
 import MovieSearchResults from "./MovieSearchResults";
-import { Button, Input, InputLabel } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import fetchMovies from "../../Utilities/MovieJsonTransform";
 
 export default function MovieList() {
-  const [movieList, setMovieList] = useState();
-  const [movieTitleSearch, setMovieTitleSearch] = useState("");
-  const movieInputRef = useRef();
+  const [movieList, setMovieList] = useState([]);
+  const [movieInputState, setMovieInputState] = useState();
+  const [movieSortColumn, setMovieSortColumn] = useState("year");
 
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `http://www.omdbapi.com/?apikey=ac8a5131&s=${movieTitleSearch}`,
-    })
-      .then((res) => {
-        setMovieList(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [movieTitleSearch]);
+  const handleFetch = () => {
+    fetchMovies(movieInputState).then((transformedMovies) => {
+      setMovieList(transformedMovies);
+    });
+  };
 
   return (
     <div>
-      <InputLabel>Title:</InputLabel>
-      <Input
-        ref={movieInputRef}
+      <label className="movie-search-input-label">Title:</label>
+      <input
         type="text"
         color="primary"
         margin="dense"
-        // value={movieTitleSearch}
-        // onChange={(e) => {
-        //   setMovieTitleSearch(e.target.value);
-        // }}
+        className="movie-search-input"
+        onChange={(e) => {
+          setMovieInputState(e.target.value);
+        }}
       />
       <Button
         variant="outlined"
         color="primary"
-        onClick={() => {
-          setMovieTitleSearch(movieInputRef.current.value);
-        }}
+        size="large"
+        onClick={handleFetch}
       >
         Search
       </Button>
 
       <div className="movie-search-results_wrapper">
-        <MovieSearchResults movieList={movieList} />
+        <MovieSearchResults
+          setMovieList={setMovieList}
+          Checkbox
+          movieList={movieList}
+          movieSortColumn={movieSortColumn}
+          setMovieSortColumn={setMovieSortColumn}
+        />
       </div>
     </div>
   );

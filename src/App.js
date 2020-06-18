@@ -15,6 +15,7 @@ function App() {
     <Router>
       <div className="App"></div>
       <Navbar />
+
       <br />
       {/* <Route path="/" exact component={Navbar} /> */}
       <Route path="/moviesearch" exact component={MovieList} />

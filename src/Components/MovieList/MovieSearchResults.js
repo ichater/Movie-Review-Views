@@ -1,12 +1,15 @@
 import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import { withStyles } from "@material-ui/core/styles";
+
+import {
+  Checkbox,
+  TableRow,
+  TableHead,
+  TableContainer,
+  TableCell,
+  TableBody,
+  Table,
+} from "@material-ui/core";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -26,32 +29,62 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
+export default function MovieSearchResults({
+  movieList,
+  movieSortColumn,
+  setMovieSortColumn,
+}) {
+  const sortMovies = (a, b) => {
+    if (movieSortColumn === "year") {
+      return a[movieSortColumn] - b[movieSortColumn];
+    }
+    if (movieSortColumn === "title") {
+      const titleA = a.title.toUpperCase();
+      const titleB = b.title.toUpperCase();
+      return titleA < titleB ? -1 : 1;
+    }
+  };
 
-export default function MovieSearchResults({ movieList }) {
+  const sortedMovieList = movieList?.sort(sortMovies);
   return (
     <TableContainer>
       <Table aria-label="customized table" color="primary">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Title</StyledTableCell>
-
-            <StyledTableCell align="center">Year&nbsp;</StyledTableCell>
-            {/* <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-    <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell> */}
+            <StyledTableCell align="left">Select</StyledTableCell>
+            <StyledTableCell
+              onClick={() => {
+                setMovieSortColumn("title");
+              }}
+            >
+              Title
+            </StyledTableCell>
+            <StyledTableCell
+              align="center"
+              onClick={() => {
+                setMovieSortColumn("year");
+              }}
+            >
+              Year&nbsp;
+            </StyledTableCell>
+            <StyledTableCell align="center">Type&nbsp;</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {" "}
-          {movieList?.Search?.map((movie) => {
+          {sortedMovieList?.map((movie) => {
             return (
-              <StyledTableRow key={movie.imdbID} className="movie-table-row">
-                <StyledTableCell>{movie.Title}</StyledTableCell>
-                <StyledTableCell align="center">{movie.Year}</StyledTableCell>
+              <StyledTableRow key={movie.id} className="movie-table-row">
+                <StyledTableCell align="left">
+                  <Checkbox />
+                </StyledTableCell>
+
+                <StyledTableCell className="movie-title-poster">
+                  <h3>{movie.title}</h3>
+                  <img src={movie.poster} alt="movie poster"></img>
+                </StyledTableCell>
+                <StyledTableCell align="center">{movie.year}</StyledTableCell>
+                <StyledTableCell align="center">{movie.type}</StyledTableCell>
               </StyledTableRow>
             );
           })}
