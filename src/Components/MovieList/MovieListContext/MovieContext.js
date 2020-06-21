@@ -3,10 +3,11 @@ import React, { createContext, useState } from "react";
 export const MovieContext = createContext();
 
 const MovieContextProvider = (props) => {
-  const [movieSortColumn, setMovieSortColumn] = useState();
   const [movieList, setMovieList] = useState([]);
   const [movieInputState, setMovieInputState] = useState();
   const [toggleCols, setToggleCols] = useState(true);
+  const [movieSortColumn, setMovieSortColumn] = useState();
+
   const toggle = () =>
     toggleCols === true ? setToggleCols(false) : setToggleCols(true);
 

@@ -1,24 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { MovieContext } from "./MovieListContext/MovieContext";
-import { withStyles } from "@material-ui/core/styles";
-import {
-  StyledTableCell,
-  StyledTableRow,
-} from "../../CSS-muitheme/TableStyles";
-import {
-  Checkbox,
-  TableRow,
-  TableHead,
-  TableContainer,
-  TableBody,
-  Table,
-} from "@material-ui/core";
-import MovieSearchResultsRendered from "./MovieSearchResultsRendered";
+
+import { StyledTableCell } from "../../CSS-muitheme/TableStyles";
+import { TableContainer, Table } from "@material-ui/core";
+import MovieTableHeader from "./MovieTableHeader";
+import MovieTableBody from "./MovieTableBody";
 
 export default function MovieSearchResults({ movieList, setMovieSortColumn }) {
-  const toggle = () =>
-    toggleCols === true ? setToggleCols(false) : setToggleCols(true);
-  const { sortMovies, unSortMovies, toggleCols, setToggleCols } = useContext(
+  const { sortMovies, unSortMovies, toggleCols, toggle } = useContext(
     MovieContext
   );
   let sortedMovieList;
@@ -29,57 +18,17 @@ export default function MovieSearchResults({ movieList, setMovieSortColumn }) {
   return (
     <TableContainer>
       <Table aria-label="customized table" color="primary">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="left">Select</StyledTableCell>
-            <StyledTableCell
-              className="interactive-title"
-              onClick={() => {
-                console.log(toggleCols);
-                toggle();
-                setMovieSortColumn("title");
-              }}
-            >
-              Title
-            </StyledTableCell>
-            <StyledTableCell
-              className="interactive-title"
-              align="center"
-              onClick={() => {
-                console.log(toggleCols);
-                toggle();
-                setMovieSortColumn("year");
-              }}
-            >
-              Year&nbsp;
-            </StyledTableCell>
-            <StyledTableCell align="center">Type&nbsp;</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {" "}
-          {sortedMovieList?.map((movie) => {
-            return (
-              <StyledTableRow key={movie.id} className="movie-table-row">
-                <StyledTableCell align="left">
-                  <Checkbox />
-                </StyledTableCell>
-
-                <StyledTableCell className="movie-title-poster">
-                  <h3>{movie.title}</h3>
-                  <img src={movie.poster} alt="movie poster"></img>
-                </StyledTableCell>
-                <StyledTableCell align="center">{movie.year}</StyledTableCell>
-                <StyledTableCell align="center">{movie.type}</StyledTableCell>
-              </StyledTableRow>
-              // <MovieSearchResultsRendered
-              //   key={movie.id}
-              //   {...sortedMovieList}
-              //   Checkbox={Checkbox}
-              // />
-            );
-          })}
-        </TableBody>
+        {(movieList.length > 0 && (
+          <MovieTableHeader
+            toggle={toggle}
+            setMovieSortColumn={setMovieSortColumn}
+            StyledTableCell={StyledTableCell}
+          />
+        )) || <div>Select movies please</div>}
+        <MovieTableBody
+          sortedMovieList={sortedMovieList}
+          setMovieSortColumn={setMovieSortColumn}
+        />
       </Table>
     </TableContainer>
   );
