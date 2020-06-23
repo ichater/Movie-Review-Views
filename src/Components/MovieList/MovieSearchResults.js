@@ -2,18 +2,16 @@ import React, { useContext } from "react";
 import { MovieContext } from "./MovieListContext/MovieContext";
 
 import { StyledTableCell } from "../../CSS-muitheme/TableStyles";
-import { TableContainer, Table } from "@material-ui/core";
+import { TableContainer, Table, TableRow, TableHead } from "@material-ui/core";
 import MovieTableHeader from "./MovieTableHeader";
 import MovieTableBody from "./MovieTableBody";
 
 export default function MovieSearchResults({ movieList, setMovieSortColumn }) {
-  const { sortMovies, unSortMovies, toggleCols, toggle } = useContext(
-    MovieContext
-  );
+  const { sortMovies, toggleCols, toggle } = useContext(MovieContext);
   let sortedMovieList;
   toggleCols !== true
-    ? (sortedMovieList = movieList?.sort(sortMovies))
-    : (sortedMovieList = movieList?.sort(unSortMovies));
+    ? (sortedMovieList = movieList.sort(sortMovies))
+    : (sortedMovieList = movieList.sort(sortMovies).reverse());
 
   return (
     <TableContainer>
@@ -24,7 +22,13 @@ export default function MovieSearchResults({ movieList, setMovieSortColumn }) {
             setMovieSortColumn={setMovieSortColumn}
             StyledTableCell={StyledTableCell}
           />
-        )) || <div>Select movies please</div>}
+        )) || (
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Select movies please</StyledTableCell>
+            </TableRow>
+          </TableHead>
+        )}
         <MovieTableBody
           sortedMovieList={sortedMovieList}
           setMovieSortColumn={setMovieSortColumn}

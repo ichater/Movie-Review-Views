@@ -22,17 +22,6 @@ const MovieContextProvider = (props) => {
     }
   };
 
-  const unSortMovies = (a, b) => {
-    if (movieSortColumn === "year") {
-      return b[movieSortColumn] - a[movieSortColumn];
-    }
-    if (movieSortColumn === "title") {
-      const titleA = a.title.toUpperCase();
-      const titleB = b.title.toUpperCase();
-      return titleA < titleB ? 1 : -1;
-    }
-  };
-
   const test = "test";
   return (
     <MovieContext.Provider
@@ -42,7 +31,7 @@ const MovieContextProvider = (props) => {
         setMovieSortColumn,
         setMovieInputState,
         sortMovies,
-        unSortMovies,
+
         movieList,
         setMovieList,
         toggle,

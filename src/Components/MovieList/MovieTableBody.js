@@ -9,7 +9,6 @@ const MovieTableBody = (props) => {
   const { sortedMovieList } = props;
   return (
     <TableBody>
-      {" "}
       {sortedMovieList?.map((movie) => {
         return (
           <>

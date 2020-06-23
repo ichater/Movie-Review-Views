@@ -12,6 +12,10 @@ const fetchMovies = (titleSearch) => {
 };
 //abstraction
 const transformOmdbData = (data) => {
+  //{"Response":"False","Error":"Movie not found!"}
+  if (data.Response === "False") {
+    return [];
+  }
   const oldData = data.Search;
   const newData = oldData.map((movie) => {
     return {
