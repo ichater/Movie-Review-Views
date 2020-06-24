@@ -10,7 +10,7 @@ export default function MovieItem({ title, poster, year, type }) {
     <>
       <StyledTableRow className="movie-table-row">
         <StyledTableCell align="left">
-          <Checkbox />
+          <input type="checkbox" data-testid="CheckBox" />
         </StyledTableCell>
         <StyledTableCell
           className="movie-title-poster"

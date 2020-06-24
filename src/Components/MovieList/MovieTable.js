@@ -4,7 +4,7 @@ import { TableContainer, Table, TableRow, TableHead } from "@material-ui/core";
 import MovieTableHeader from "./MovieTableHeader";
 import MovieTableBody from "./MovieTableBody";
 
-export default function MovieSearchResults({ movieList, setMovieSortColumn }) {
+export default function MovieTable({ movieList, setMovieSortColumn }) {
   const { sortMovies, toggleCols, toggle } = useContext(MovieContext);
   let sortedMovieList;
   toggleCols !== true

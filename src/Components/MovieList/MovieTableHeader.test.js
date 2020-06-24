@@ -20,7 +20,23 @@ it("renders Select movies please", () => {
   );
 });
 
+// it("interactive table header not visible", () => {
+//   const { getByTestId } = render(<MovieTableHeader isPopulated={0} />);
+//   expect(getByTestId("interactive-title")).not.toBeInTheDocument();
+// });
+
+it("interactive table header visible", () => {
+  const { getByTestId } = render(<MovieTableHeader isPopulated={1} />);
+  expect(getByTestId("interactive-title")).toBeVisible();
+});
+
 it("renders Select movies please", () => {
   const { getByTestId } = render(<MovieTableHeader isPopulated={1} />);
   expect(getByTestId("interactive-title")).toBeVisible();
+});
+
+const add = jest.fn((a, b) => a + b);
+
+test("add", () => {
+  expect(add(1, 2)).toBe(3);
 });

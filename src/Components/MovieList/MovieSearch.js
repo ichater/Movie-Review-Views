@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { MovieContext } from "./MovieListContext/MovieContext";
-import MovieSearchResults from "./MovieSearchResults";
+import MovieTable from "./MovieTable";
 import { Button } from "@material-ui/core";
 import fetchMovies from "../../Utilities/MovieJsonTransform";
 
-export default function MovieList() {
+export default function MovieSearch() {
   const {
     movieList,
     setMovieList,
@@ -44,7 +44,7 @@ export default function MovieList() {
       </Button>
 
       <div className="movie-search-results_wrapper">
-        <MovieSearchResults
+        <MovieTable
           setMovieList={setMovieList}
           Checkbox
           movieList={movieList}
