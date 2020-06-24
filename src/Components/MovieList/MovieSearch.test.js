@@ -1,11 +1,22 @@
 import MovieSearch from "./MovieSearch";
+
 import React from "react";
 import ReactDOM from "react-dom";
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import {
+  render,
+  fireEvent,
+  waitFor,
+  screen,
+  getByText,
+  cleanup,
+} from "@testing-library/react";
 import MovieContextProvider from "./MovieListContext/MovieContext";
 import fetchMovies from "../../Utilities/MovieJsonTransform";
+// import TestEvents from "./TestEvents";
 
 jest.mock("../../Utilities/MovieJsonTransform");
+
+afterEach(cleanup);
 
 describe("fetching movies", () => {
   beforeEach(() => {
@@ -21,11 +32,13 @@ describe("fetching movies", () => {
   test("search button fetches movies", () => {
     fireEvent.click(screen.getByText("Search"));
     expect(fetchMovies).toHaveBeenCalled();
-
-    // expect(container.firstChild).toMatchInlineSnapshot(`
-    //   <h1>bruno</h1>
-    // `)
-
-    // expect(getByTestId("counter-value").innerHTML).toEqual("3");
   });
 });
+
+// it("search button fetches moviers", () => {
+//   const { getByTestId } = render(<MovieSearch />);
+//   getByTestId("movie-fetch-input").textContent("blade");
+//   fireEvent.click(getByTestId("movie-fetch"));
+
+//   expect(fetchMovies).toHaveBeenCalled();
+// });

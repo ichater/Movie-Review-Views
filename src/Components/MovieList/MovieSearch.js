@@ -27,6 +27,7 @@ export default function MovieList() {
         color="primary"
         margin="dense"
         className="movie-search-input"
+        data-testid="movie-search-input"
         value={movieInputState}
         onChange={(e) => {
           setMovieInputState(e.target.value);
@@ -36,6 +37,7 @@ export default function MovieList() {
         variant="outlined"
         color="primary"
         size="large"
+        data-testid="movie-fetch"
         onClick={handleFetch}
       >
         Search

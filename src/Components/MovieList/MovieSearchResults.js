@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { MovieContext } from "./MovieListContext/MovieContext";
-
-import { StyledTableCell } from "../../CSS-muitheme/TableStyles";
 import { TableContainer, Table, TableRow, TableHead } from "@material-ui/core";
 import MovieTableHeader from "./MovieTableHeader";
 import MovieTableBody from "./MovieTableBody";
@@ -16,19 +14,11 @@ export default function MovieSearchResults({ movieList, setMovieSortColumn }) {
   return (
     <TableContainer>
       <Table aria-label="customized table" color="primary">
-        {(movieList.length > 0 && (
-          <MovieTableHeader
-            toggle={toggle}
-            setMovieSortColumn={setMovieSortColumn}
-            StyledTableCell={StyledTableCell}
-          />
-        )) || (
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Select movies please</StyledTableCell>
-            </TableRow>
-          </TableHead>
-        )}
+        <MovieTableHeader
+          toggle={toggle}
+          setMovieSortColumn={setMovieSortColumn}
+          isPopulated={movieList.length > 0}
+        />
         <MovieTableBody
           sortedMovieList={sortedMovieList}
           setMovieSortColumn={setMovieSortColumn}

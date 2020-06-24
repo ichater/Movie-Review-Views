@@ -31,7 +31,6 @@ const MovieContextProvider = (props) => {
         setMovieSortColumn,
         setMovieInputState,
         sortMovies,
-
         movieList,
         setMovieList,
         toggle,
