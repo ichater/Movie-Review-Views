@@ -34,9 +34,3 @@ it("renders Select movies please", () => {
   const { getByTestId } = render(<MovieTableHeader isPopulated={1} />);
   expect(getByTestId("interactive-title")).toBeVisible();
 });
-
-const add = jest.fn((a, b) => a + b);
-
-test("add", () => {
-  expect(add(1, 2)).toBe(3);
-});

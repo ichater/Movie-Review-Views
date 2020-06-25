@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./CSS/App.css";
-import MainMovieComponentRenderer from "./Components/MovieList/MainMovieComponentRenderer";
+
 import UserList from "./Components/User/UserList";
 import CreateUser from "./Components/User/CreateUser";
 import Navbar from "./Components/NavBar/Navbar";
 import LogIn from "./Components/LogIn/LogIn";
 import Register from "./Components/LogIn/Register";
 import UserPage from "./Components/User/UserPage";
+import MovieSearch from "./Components/MovieList/MovieSearch";
 
 //do routes need to be declared at the app level like this?
 function App() {
@@ -18,7 +19,7 @@ function App() {
 
       <br />
       {/* <Route path="/" exact component={Navbar} /> */}
-      <Route path="/moviesearch" exact component={MainMovieComponentRenderer} />
+      <Route path="/moviesearch" exact component={MovieSearch} />
       <Route path="/users" exact component={UserList} />
       <Route path="/user/add" exact component={CreateUser} />
       <Route path="/signin" exact component={LogIn} />
