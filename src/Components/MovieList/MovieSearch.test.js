@@ -1,5 +1,5 @@
 import MovieSearch from "./MovieSearch";
-import MovieContext from "./MovieListContext/MovieContext";
+import MovieItem from "./MovieItem";
 import React from "react";
 import ReactDOM from "react-dom";
 import {
@@ -10,9 +10,8 @@ import {
   getByText,
   cleanup,
 } from "@testing-library/react";
-import MovieContextProvider from "./MovieListContext/MovieContext";
+import axios from "axios";
 import fetchMovies from "../../Utilities/MovieJsonTransform";
-// import TestEvents from "./TestEvents";
 
 jest.mock("../../Utilities/MovieJsonTransform");
 
@@ -26,20 +25,27 @@ test("add", () => {
 });
 
 const successfulMovieAPICall = jest.fn(() => {
-  return [
-    {
-      id: "tt1302006",
-      title: "The Irishman",
-      year: 2019,
-      type: "movie",
-      poster:
-        "https://m.media-amazon.com/images/M/MV5BMGUyM2ZiZm…DJiMWMwXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_SX300.jpg",
+  axios.get.mockResolvedValueOnce({
+    data: {
+      results: [
+        {
+          id: "tt1302006",
+          title: "The Irishman",
+          year: 2019,
+          type: "movie",
+          poster:
+            "https://m.media-amazon.com/images/M/MV5BMGUyM2ZiZm…DJiMWMwXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_SX300.jpg",
+        },
+      ],
     },
-  ];
+  });
 });
 
-test("api call success", () => {
-  expect(add(1, 2)).toBe(3);
-  expect(add(1, 2)).toBe(3);
-  expect(add).toHaveBeenCalledTimes(2);
+test("api call success", async () => {
+  successfulMovieAPICall();
+  const { getByTestId } = render(<MovieItem />);
+  const movieYearDisplay = await waitFor(() => {
+    getAllByTestId("movie-year").map((year) => year.textContent);
+  });
+  expect(getByTestId("movie-year")).toHaveTextContent("2019");
 });

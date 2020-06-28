@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { TableContainer, Table, TableRow, TableHead } from "@material-ui/core";
+import { TableContainer, Table } from "@material-ui/core";
 import MovieTableHeader from "./MovieTableHeader";
 import MovieTableBody from "./MovieTableBody";
 

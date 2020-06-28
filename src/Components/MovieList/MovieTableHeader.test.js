@@ -2,14 +2,7 @@ import MovieTableHeader from "./MovieTableHeader";
 
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  render,
-  fireEvent,
-  waitFor,
-  screen,
-  getByText,
-  cleanup,
-} from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 
 afterEach(cleanup);
 

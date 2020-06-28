@@ -3,7 +3,6 @@ import {
   StyledTableCell,
   StyledTableRow,
 } from "../../CSS-muitheme/TableStyles";
-import { Checkbox } from "@material-ui/core";
 
 export default function MovieItem({ title, poster, year, type }) {
   return (

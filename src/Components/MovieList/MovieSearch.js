@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import MovieTable from "./MovieTable";
 import { Button } from "@material-ui/core";
 import fetchMovies from "../../Utilities/MovieJsonTransform";
