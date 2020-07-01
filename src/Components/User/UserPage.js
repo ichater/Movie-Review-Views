@@ -16,5 +16,10 @@ export default function UserPage() {
       .catch((err) => console.log(err));
   }, []);
 
-  return <div>{user.username}</div>;
+  return (
+    <div>
+      {user.username}
+      {user.email}
+    </div>
+  );
 }

@@ -7,45 +7,44 @@ import {
   fireEvent,
   waitFor,
   screen,
-  getByText,
   cleanup,
 } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
+// import axios from "axios";
+// import fetchMovies from "../../Utilities/MovieJsonTransform";
 import axios from "axios";
-import fetchMovies from "../../Utilities/MovieJsonTransform";
 
-jest.mock("../../Utilities/MovieJsonTransform");
+jest.mock("axios");
 
 afterEach(cleanup);
-const add = jest.fn((a, b) => a + b);
-
-test("add", () => {
-  expect(add(1, 2)).toBe(3);
-  expect(add(1, 2)).toBe(3);
-  expect(add).toHaveBeenCalledTimes(2);
-});
-
-const successfulMovieAPICall = jest.fn(() => {
-  axios.get.mockResolvedValueOnce({
-    data: {
-      results: [
-        {
-          id: "tt1302006",
-          title: "The Irishman",
-          year: 2019,
-          type: "movie",
-          poster:
-            "https://m.media-amazon.com/images/M/MV5BMGUyM2ZiZm…DJiMWMwXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_SX300.jpg",
-        },
-      ],
-    },
-  });
-});
 
 test("api call success", async () => {
-  successfulMovieAPICall();
-  const { getByTestId } = render(<MovieItem />);
-  const movieYearDisplay = await waitFor(() => {
-    getAllByTestId("movie-year").map((year) => year.textContent);
+  const movie1 = {
+    id: "tm1",
+    title: "Test Movie 1",
+    year: 1990,
+    type: "action",
+    poster: "somePoster.jpg",
+  };
+
+  const fakeFunction = () => {
+    return new Promise((resolve, reject) => {
+      resolve([movie1]);
+    });
+  };
+
+  const { getByTestId, getByText } = render(
+    act(() => {
+      <MovieSearch fetchMovies={fakeFunction} />;
+    })
+  );
+  // fireEvent(getByTestId("movie-fetch"), new MouseEvent("click"));
+
+  act(() => {
+    fireEvent.click(getByText("Search"));
   });
-  expect(getByTestId("movie-year")).toHaveTextContent("2019");
+
+  // 3
+
+  expect(getByTestId("movie-year")).toHaveTextContent("1990");
 });

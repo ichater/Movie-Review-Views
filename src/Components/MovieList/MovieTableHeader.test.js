@@ -13,17 +13,12 @@ it("renders Select movies please", () => {
   );
 });
 
-// it("interactive table header not visible", () => {
-//   const { getByTestId } = render(<MovieTableHeader isPopulated={0} />);
-//   expect(getByTestId("interactive-title")).not.toBeInTheDocument();
-// });
-
-it("interactive table header visible", () => {
-  const { getByTestId } = render(<MovieTableHeader isPopulated={1} />);
-  expect(getByTestId("interactive-title")).toBeVisible();
+it("When there are no movies to show 'select movies please' is visible", () => {
+  const { getByTestId } = render(<MovieTableHeader isPopulated={false} />);
+  expect(getByTestId("no-movie-response")).toBeVisible();
 });
 
-it("renders Select movies please", () => {
+it("interactive table header visible", () => {
   const { getByTestId } = render(<MovieTableHeader isPopulated={1} />);
   expect(getByTestId("interactive-title")).toBeVisible();
 });

@@ -8,7 +8,7 @@ import Navbar from "./Components/NavBar/Navbar";
 import LogIn from "./Components/LogIn/LogIn";
 import Register from "./Components/LogIn/Register";
 import UserPage from "./Components/User/UserPage";
-import MovieSearch from "./Components/MovieList/MovieSearch";
+import MovieContainer from "./Components/MovieList/MovieContainer";
 
 //do routes need to be declared at the app level like this?
 function App() {
@@ -19,7 +19,7 @@ function App() {
 
       <br />
       {/* <Route path="/" exact component={Navbar} /> */}
-      <Route path="/moviesearch" exact component={MovieSearch} />
+      <Route path="/MovieSearch" exact component={MovieContainer} />
       <Route path="/users" exact component={UserList} />
       <Route path="/user/add" exact component={CreateUser} />
       <Route path="/signin" exact component={LogIn} />

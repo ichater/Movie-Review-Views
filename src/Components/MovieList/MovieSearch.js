@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import MovieTable from "./MovieTable";
 import { Button } from "@material-ui/core";
-import fetchMovies from "../../Utilities/MovieJsonTransform";
+// import fetchMovies from "../../Utilities/MovieJsonTransform";
 
-export default function MovieSearch() {
+export default function MovieSearch({ fetchMovies }) {
   const [movieList, setMovieList] = useState([]);
   const [movieInputState, setMovieInputState] = useState();
   const [movieSortColumn, setMovieSortColumn] = useState();
 
+  //<MovieSearch fetchMoviesDepend=...  />
+
   const handleFetch = () => {
     fetchMovies(movieInputState).then((transformedMovies) => {
+      console.log(transformedMovies);
       setMovieList(transformedMovies);
       console.log(movieList);
     });
