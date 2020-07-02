@@ -8,11 +8,11 @@ import {
   waitFor,
   screen,
   cleanup,
+  act,
+  waitForElementToBeRemoved
 } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
 // import axios from "axios";
 // import fetchMovies from "../../Utilities/MovieJsonTransform";
-import axios from "axios";
 
 jest.mock("axios");
 
@@ -27,24 +27,13 @@ test("api call success", async () => {
     poster: "somePoster.jpg",
   };
 
-  const fakeFunction = () => {
-    return new Promise((resolve, reject) => {
-      resolve([movie1]);
-    });
-  };
+  const fakeFunction =() => Promise.resolve([movie1]);
 
-  const { getByTestId, getByText } = render(
-    act(() => {
-      <MovieSearch fetchMovies={fakeFunction} />;
-    })
-  );
-  // fireEvent(getByTestId("movie-fetch"), new MouseEvent("click"));
+  const { getByTestId, getByText } = render(<MovieSearch fetchMovies={fakeFunction} />);
+  fireEvent.click(getByText("Search"));
 
-  act(() => {
-    fireEvent.click(getByText("Search"));
-  });
-
-  // 3
+  await waitForElementToBeRemoved(() => screen.getByTestId("no-movie-response"))
 
   expect(getByTestId("movie-year")).toHaveTextContent("1990");
+
 });
