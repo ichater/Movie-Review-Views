@@ -8,14 +8,10 @@ export default function MovieSearch({ fetchMovies }) {
   const [movieInputState, setMovieInputState] = useState();
   const [movieSortColumn, setMovieSortColumn] = useState();
 
-  //<MovieSearch fetchMoviesDepend=...  />
-
-  const handleFetch = () => {
-    fetchMovies(movieInputState).then((transformedMovies) => {
-      console.log(transformedMovies);
-      setMovieList(transformedMovies);
-      console.log(movieList);
-    });
+  const handleFetch = async () => {
+    const movies = await fetchMovies(movieInputState)
+    console.log(movies)
+    setMovieList(movies)
   };
 
   return (

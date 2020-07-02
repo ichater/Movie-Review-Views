@@ -8,7 +8,6 @@ export default function MovieTableHeader(props) {
       <TableRow data-testid="movie-table-header">
         {isPopulated ? (
           <>
-            {" "}
             <StyledTableCell align="left">Select</StyledTableCell>
             <StyledTableCell
               data-testid="interactive-title"
@@ -29,7 +28,7 @@ export default function MovieTableHeader(props) {
               }}
             >
               Year&nbsp;
-            </StyledTableCell>{" "}
+            </StyledTableCell>
           </>
         ) : (
           <StyledTableCell data-testid="no-movie-response">
