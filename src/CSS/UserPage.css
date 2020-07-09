@@ -1,0 +1,14 @@
+.main-user-table {
+  margin: auto;
+  border: 1px solid black;
+  width: 60%;
+}
+
+.main-user-table_header-row th:nth-child(1) {
+  display: flex;
+  justify-content: start;
+}
+
+.main-user-table_user-row td:nth-child(2) {
+  width: 40%;
+}

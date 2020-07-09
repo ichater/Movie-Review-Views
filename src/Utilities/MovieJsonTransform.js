@@ -6,12 +6,14 @@ const fetchMovies = (titleSearch) => {
     url: `http://www.omdbapi.com/?apikey=47416750&s=${titleSearch}`,
   })
     .then((res) => {
+      console.log(res.data);
       return transformOmdbData(res.data);
     })
     .catch((err) => console.log(err));
 };
+
 //abstraction
-const transformOmdbData = (data) => {
+export const transformOmdbData = (data) => {
   //{"Response":"False","Error":"Movie not found!"}
   if (data.Response === "False") {
     return [];

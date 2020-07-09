@@ -9,7 +9,7 @@ import {
   screen,
   cleanup,
   act,
-  waitForElementToBeRemoved
+  waitForElementToBeRemoved,
 } from "@testing-library/react";
 // import axios from "axios";
 // import fetchMovies from "../../Utilities/MovieJsonTransform";
@@ -18,7 +18,7 @@ jest.mock("axios");
 
 afterEach(cleanup);
 
-test("api call success", async () => {
+test("api call success renders movies to table", async () => {
   const movie1 = {
     id: "tm1",
     title: "Test Movie 1",
@@ -27,13 +27,26 @@ test("api call success", async () => {
     poster: "somePoster.jpg",
   };
 
-  const fakeFunction =() => Promise.resolve([movie1]);
+  const fakeApiResult = () => Promise.resolve([movie1]);
 
-  const { getByTestId, getByText } = render(<MovieSearch fetchMovies={fakeFunction} />);
+  const { getByTestId, getByText } = render(
+    <MovieSearch fetchMovies={fakeApiResult} />
+  );
   fireEvent.click(getByText("Search"));
 
-  await waitForElementToBeRemoved(() => screen.getByTestId("no-movie-response"))
+  await waitForElementToBeRemoved(() =>
+    screen.getByTestId("no-movie-response")
+  );
 
   expect(getByTestId("movie-year")).toHaveTextContent("1990");
+});
 
+test("api call fail keeps table at 0 movies visible", async () => {
+  const fakeApiFailResult = () => Promise.resolve([]);
+  const { getByTestId, getByText } = render(
+    <MovieSearch fetchMovies={fakeApiFailResult} />
+  );
+  fireEvent.click(getByText("Search"));
+
+  expect(getByTestId("no-movie-response")).toBeVisible();
 });
