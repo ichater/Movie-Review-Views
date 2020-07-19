@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MovieTable from "./MovieTable";
-import { Button } from "@material-ui/core";
+import MovieSearchBackgroundImage from "./MovieSearchBackgroundImage";
 // import fetchMovies from "../../Utilities/MovieJsonTransform";
 
 export default function MovieSearch({ fetchMovies }) {
@@ -15,9 +15,7 @@ export default function MovieSearch({ fetchMovies }) {
 
   return (
     <div className="movieSearchBackground">
-      <img
-        src={require("../../CSS/images/once-upon-a-time-in-america-1530579166.jpg")}
-      />
+      <MovieSearchBackgroundImage />
       <div className="movie-search-input-wrapper">
         <label className="movie-search-input-label">Title:</label>
         <input
@@ -31,7 +29,8 @@ export default function MovieSearch({ fetchMovies }) {
             setMovieInputState(e.target.value);
           }}
         />
-        <Button
+        <div
+          className="movie-search-button"
           variant="outlined"
           color="primary"
           size="large"
@@ -39,7 +38,7 @@ export default function MovieSearch({ fetchMovies }) {
           onClick={handleFetch}
         >
           Search
-        </Button>
+        </div>
       </div>
 
       <div className="movie-search-results_wrapper">
