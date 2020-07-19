@@ -20,10 +20,7 @@ export default function Register() {
         </div>
         <button type="submit">Register</button>
       </form>
-      <Link to="/signin" className="navbar-item">
-        {" "}
-        Log In{" "}
-      </Link>
+      <Link to="/signin"> Log In </Link>
     </div>
   );
 }

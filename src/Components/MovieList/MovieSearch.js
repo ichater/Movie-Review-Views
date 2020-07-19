@@ -14,28 +14,33 @@ export default function MovieSearch({ fetchMovies }) {
   };
 
   return (
-    <div>
-      <label className="movie-search-input-label">Title:</label>
-      <input
-        type="text"
-        color="primary"
-        margin="dense"
-        className="movie-search-input"
-        data-testid="movie-search-input"
-        value={movieInputState}
-        onChange={(e) => {
-          setMovieInputState(e.target.value);
-        }}
+    <div className="movieSearchBackground">
+      <img
+        src={require("../../CSS/images/once-upon-a-time-in-america-1530579166.jpg")}
       />
-      <Button
-        variant="outlined"
-        color="primary"
-        size="large"
-        data-testid="movie-fetch"
-        onClick={handleFetch}
-      >
-        Search
-      </Button>
+      <div className="movie-search-input-wrapper">
+        <label className="movie-search-input-label">Title:</label>
+        <input
+          type="text"
+          color="primary"
+          margin="dense"
+          className="movie-search-input"
+          data-testid="movie-search-input"
+          value={movieInputState}
+          onChange={(e) => {
+            setMovieInputState(e.target.value);
+          }}
+        />
+        <Button
+          variant="outlined"
+          color="primary"
+          size="large"
+          data-testid="movie-fetch"
+          onClick={handleFetch}
+        >
+          Search
+        </Button>
+      </div>
 
       <div className="movie-search-results_wrapper">
         <MovieTable

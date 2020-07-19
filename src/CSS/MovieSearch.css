@@ -1,3 +1,11 @@
+.movie-search-input-wrapper {
+  margin-left: 10%;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 20%;
+}
+
 .movie-search-input {
   height: 2rem;
   font-size: 16px;

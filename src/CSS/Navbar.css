@@ -1,8 +1,7 @@
 .navbar-main {
-  height: 2rem;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  border: 1px solid black;
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-self: center;
@@ -12,4 +11,23 @@
   display: flex;
   justify-content: center;
   justify-self: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1em 1em;
+  text-decoration: none;
+}
+
+.navbar-item-selected {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1em 1em;
+  text-decoration: none;
+  background-color: aqua;
+}
+
+.navbar-item:hover {
+  background-color: aqua;
 }

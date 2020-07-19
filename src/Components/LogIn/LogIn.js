@@ -16,10 +16,7 @@ export default function LogIn() {
         </div>
         <button type="submit">Register</button>
       </form>
-      <Link to="/register" className="navbar-item">
-        {" "}
-        Register{" "}
-      </Link>
+      <Link to="/register"> Register </Link>
     </div>
   );
 }
