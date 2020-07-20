@@ -9,8 +9,7 @@
 .movie-search-input {
   height: 2rem;
   font-size: 16px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left4 56tgb: 5px;
   background-color: rgba(204, 255, 255, 0.5);
 }
 
@@ -39,4 +38,5 @@
   top: 0;
   position: absolute;
   z-index: -1;
+  width: 100%;
 }
