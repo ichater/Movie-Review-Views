@@ -4,6 +4,11 @@
   width: 60%;
 }
 
+.user-table_wrapper {
+  margin-top: 100px;
+  background-color: rgba(204, 255, 255, 0.7);
+}
+
 .main-user-table_header-row th:nth-child(1) {
   display: flex;
   justify-content: start;

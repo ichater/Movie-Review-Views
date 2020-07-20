@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import MovieTable from "./MovieTable";
-import MovieSearchBackgroundImage from "./MovieSearchBackgroundImage";
-// import fetchMovies from "../../Utilities/MovieJsonTransform";
 
 export default function MovieSearch({ fetchMovies }) {
   const [movieList, setMovieList] = useState([]);
@@ -15,7 +13,6 @@ export default function MovieSearch({ fetchMovies }) {
 
   return (
     <div className="movieSearchBackground">
-      <MovieSearchBackgroundImage />
       <div className="movie-search-input-wrapper">
         <label className="movie-search-input-label">Title:</label>
         <input
