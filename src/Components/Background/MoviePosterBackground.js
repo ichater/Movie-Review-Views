@@ -17,6 +17,7 @@ export default function MoviePosterBackground() {
   return (
     <>
       <img
+        data-testid="movie-poster-background"
         className="movie-poster-background"
         src={require(`../../CSS/images/${backgroundImage}`)}
         alt="Background Posters"

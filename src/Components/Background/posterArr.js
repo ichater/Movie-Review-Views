@@ -11,7 +11,7 @@ const posterArr = [
   "Woody-Allen-Diane-Keaton-Oscar-Annie-Hall.jpg",
   "Manhattan.jpg",
   "Shining.jpg",
-  "thumb-1920-691866.jpg",
+
   "SpaceOd.jpg",
   "wp4137924-raging-bull-wallpapers.jpg",
   "Goodfellas.jpg",
