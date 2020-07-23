@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const getUserFunc = (id) => {
+export const getUserFunc = (route, id) => {
   return axios({
     method: "GET",
-    url: `http://localhost:5000/users/${id}`,
+    url: `http://localhost:5000/${route}/${id}`,
   })
     .then((res) => {
       return res.data;

@@ -9,6 +9,7 @@ import Register from "./Components/LogIn/Register";
 import MovieContainer from "./Components/MovieList/MovieContainer";
 import UserPageContainer from "./Components/User/UserPageContainer";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackground";
+import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
 
 //do routes need to be declared at the app level like this?
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route path="/signin" exact component={LogIn} />
       <Route path="/register" exact component={Register} />
       <Route path="/users/:id" exact component={UserPageContainer} />
+      <Route path="/movielist/:id" exact component={UserMovieListContainer} />
     </Router>
   );
 }
