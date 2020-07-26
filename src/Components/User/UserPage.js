@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 export default function UserPage({ getUser, id }) {
   const [user, setUser] = useState({});
 
@@ -25,9 +25,11 @@ export default function UserPage({ getUser, id }) {
         <div> No Bio avalible </div>
       )}
       <div>
-        <Link to={`/movielist/${user._id}`}>
-          <span key={user.id}> {user.username} MovieList </span>
-        </Link>
+        <Router>
+          <Link to={`/movielist/${user._id}`}>
+            <span key={user.id}> {user.username} MovieList </span>
+          </Link>
+        </Router>
       </div>
     </div>
   ) : (

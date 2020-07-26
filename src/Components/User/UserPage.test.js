@@ -7,7 +7,6 @@ const testUser = {
   email: "Bats@borkuf.com.au",
   username: "Bruce Wayne",
   _id: "5efafadcc85175246cbf87b8",
-  description: "THis is a description",
 };
 
 const fakeFunction = (id) => Promise.resolve(testUser);
