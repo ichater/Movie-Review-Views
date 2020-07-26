@@ -18,7 +18,7 @@ export default function UserMovieList({ getUser, id }) {
       <div></div>
     </div>
   ) : (
-    <p>Not registering user yet </p>
+    <p data-testid="No-List-Visible">Not registering user yet </p>
   );
   return content;
 }

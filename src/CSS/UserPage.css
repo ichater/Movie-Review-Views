@@ -1,19 +1,6 @@
-.main-user-table {
+.user-page-wrapper {
+  background-color: rgba(204, 255, 255, 0.5);
+  width: 50%;
   margin: auto;
-  border: 1px solid black;
-  width: 60%;
-}
-
-.user-table_wrapper {
-  margin-top: 100px;
-  background-color: rgba(204, 255, 255, 0.7);
-}
-
-.main-user-table_header-row th:nth-child(1) {
-  display: flex;
-  justify-content: start;
-}
-
-.main-user-table_user-row td:nth-child(2) {
-  width: 40%;
+  margin-top: 4rem;
 }

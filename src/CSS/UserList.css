@@ -1,5 +1,22 @@
+.main-user-table {
+  margin: auto;
+  border: 1px solid black;
+  width: 60%;
+}
+
 .user-table_wrapper {
   width: 80%;
+  margin-top: 100px;
+  background-color: rgba(95, 173, 173, 0.7);
   margin: auto;
-  border-bottom: 1px solid black;
+  margin-top: 2rem;
+}
+
+.main-user-table_header-row th:nth-child(1) {
+  display: flex;
+  justify-content: start;
+}
+
+.main-user-table_user-row td:nth-child(2) {
+  width: 40%;
 }

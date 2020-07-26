@@ -1,19 +1,6 @@
-import React, { useState } from "react";
-import { posterArr } from "./posterArr";
-import { useInterval } from "./PosterIntevalFunction";
+import React from "react";
 
-const getRandomInt = (max) => {
-  return Math.floor(Math.random() * Math.floor(max));
-};
-
-export default function MoviePosterBackground() {
-  const [backgroundImage, setBackgroundImage] = useState(
-    posterArr[getRandomInt(posterArr.length)]
-  );
-  useInterval(() => {
-    setBackgroundImage(posterArr[getRandomInt(posterArr.length)]);
-  }, 10000);
-
+export default function MoviePosterBackground({ backgroundImage }) {
   return (
     <>
       <img

@@ -8,7 +8,7 @@ import LogIn from "./Components/LogIn/LogIn";
 import Register from "./Components/LogIn/Register";
 import MovieContainer from "./Components/MovieList/MovieContainer";
 import UserPageContainer from "./Components/User/UserPageContainer";
-import MoviePosterBackground from "./Components/Background/MoviePosterBackground";
+import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
 
 //do routes need to be declared at the app level like this?

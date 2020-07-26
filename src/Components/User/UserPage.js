@@ -31,7 +31,7 @@ export default function UserPage({ getUser, id }) {
       </div>
     </div>
   ) : (
-    <p>loading </p>
+    <p data-testid="loading">loading </p>
   );
 
   return content;
