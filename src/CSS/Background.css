@@ -1,0 +1,57 @@
+.movie-poster-background {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  margin: auto;
+  position: fixed;
+}
+
+.background-movie-wrapper {
+  position: absolute;
+
+  bottom: 50px;
+  left: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.background-movie-title {
+  color: white;
+
+  font-size: 25px;
+  font-family: "Signika", sans-serif;
+}
+
+.background-movie-title:hover {
+  cursor: pointer;
+}
+
+.background-movie-title-reveal_faded {
+  color: white;
+
+  font-size: 25px;
+  font-family: "Signika", sans-serif;
+  animation: fadeIn ease 20s;
+  opacity: 0.5;
+}
+
+.background-movie-title-reveal_faded:hover {
+  cursor: pointer;
+}
+
+.background-movie-title-reveal {
+  /* position: absolute; */
+  color: white;
+  /* bottom: 50px;
+  left: 2%; */
+  font-size: 25px;
+  font-family: "Signika", sans-serif;
+  animation: fadeIn ease 20s;
+}
+
+.background-movie-title-reveal:hover {
+  cursor: pointer;
+}

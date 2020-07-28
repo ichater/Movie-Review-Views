@@ -1,24 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default function Register() {
   return (
-    <div>
+    <div className="user-form-group_wrapper">
       {" "}
-      <form action="/register" method="POST">
-        <div>
-          <label for="userName">User Name: </label>
-          <input type="text" id="userName" name="userName"></input>
+      <form className="register-form-group" action="/register" method="POST">
+        <div className="user-form-group">
+          <label className="user-label" for="userName">
+            User Name:{" "}
+          </label>
+          <input
+            className="user-input"
+            type="text"
+            id="userName"
+            name="userName"
+          />
         </div>
-        <div>
-          <label for="email">Email: </label>
-          <input type="text" id="email" name="email"></input>
+        <div className="user-form-group">
+          <label className="user-label" for="email">
+            Email:{" "}
+          </label>
+          <input className="user-input" type="text" id="email" name="email" />
         </div>
-        <div>
-          <label for="password">Password: </label>
-          <input type="text" id="password" name="password"></input>
+        <div className="user-form-group">
+          <label className="user-label" for="password">
+            Password:{" "}
+          </label>
+          <input
+            className="user-input"
+            type="text"
+            id="password"
+            name="password"
+          />
         </div>
-        <button type="submit">Register</button>
+        <div className="login-register-btn" type="submit">
+          Register
+        </div>
       </form>
       <Link to="/signin"> Log In </Link>
     </div>

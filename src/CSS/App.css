@@ -3,12 +3,9 @@
 @import "./MovieSearch.css";
 @import "./UserPage.css";
 @import "./UserList.css";
+@import "./Background.css";
+@import "./LoginRegister.css";
 
-.movie-poster-background {
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  position: fixed;
+body {
+  background-color: black;
 }

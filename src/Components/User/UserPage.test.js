@@ -31,3 +31,19 @@ test("loading visible in absence of data", async () => {
   await fakeFunction("users", "anything");
   expect(getByText("loading")).toBeVisible();
 });
+
+const testUser1 = {
+  email: "Bats@borkuf.com.au",
+  username: "Bruce Wayne",
+  _id: "5efafadcc85175246cbf87b8",
+  description: "Description written",
+};
+
+const fakeFunction1 = (id) => Promise.resolve(testUser1);
+
+test("Description to be visible", async () => {
+  testUser.description = "this test will pass";
+  const { getByText } = render(<UserPage getUser={fakeFunction1} />);
+  await fakeFunction("users", "anything");
+  expect(getByText("Description: Description written")).toBeVisible();
+});
