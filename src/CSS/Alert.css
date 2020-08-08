@@ -1,0 +1,16 @@
+.alert {
+  position: absolute;
+  width: 15%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 25px;
+}
+
+.alert-danger {
+  background-color: red;
+  color: white;
+}

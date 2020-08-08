@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./CSS/App.css";
 import UserList from "./Components/User/UserList";
 import CreateUser from "./Components/User/CreateUser";
@@ -10,6 +10,7 @@ import MovieContainer from "./Components/MovieList/MovieContainer";
 import UserPageContainer from "./Components/User/UserPageContainer";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
+import Alert from "./Components/layout/Alert";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -26,8 +27,13 @@ function App() {
         <Route path="/MovieSearch" exact component={MovieContainer} />
         <Route path="/users" exact component={UserList} />
         <Route path="/user/add" exact component={CreateUser} />
-        <Route path="/signin" exact component={LogIn} />
-        <Route path="/register" exact component={Register} />
+        <section>
+          <Alert />
+          <Switch>
+            <Route path="/signin" exact component={LogIn} />
+            <Route path="/register" exact component={Register} />
+          </Switch>
+        </section>
         <Route path="/users/:id" exact component={UserPageContainer} />
         <Route path="/movielist/:id" exact component={UserMovieListContainer} />
       </Router>
