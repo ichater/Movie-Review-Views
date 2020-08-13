@@ -1,10 +1,11 @@
 .navbar-main {
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   justify-self: center;
+  background-color: black;
 }
 
 .navbar-item {
@@ -16,6 +17,19 @@
   padding: 1em 1em;
   text-decoration: none;
   background-color: rgba(128, 255, 255, 0.5);
+}
+
+.navbar-main .navbar-item:nth-child(4) {
+  margin-left: auto;
+}
+.navbar-main .navbar-item-selected:nth-child(4) {
+  margin-left: auto;
+}
+.navbar-main .navbar-item:nth-child(5) {
+  margin-right: auto;
+}
+.navbar-main .navbar-item-selected:nth-child(5) {
+  margin-right: auto;
 }
 
 .navbar-item-selected {

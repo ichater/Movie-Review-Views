@@ -1,30 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../actions/auth";
+import { navBarItems, guestLinks, authLinks } from "./NavBarItems";
 
-export default function Navbar() {
-  const [navbarItem, setNavBarItem] = useState(1);
-  const navBarItems = [
-    {
-      id: 1,
-      name: "Home",
-      link: "/",
-    },
-    {
-      id: 2,
-      name: "Movie Search",
-      link: "/moviesearch",
-    },
-    {
-      id: 3,
-      name: "User Search",
-      link: "/users",
-    },
-    {
-      id: 4,
-      name: "Sign In",
-      link: "/signin",
-    },
-  ];
+//{ auth: { isAuthenticated, loading }, logout }
+const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+  const [navbarItem, setNavBarItem] = useState();
+
+  // const authLinks =()
+
+  // const guestLinks=()
+
   return (
     <nav className="navbar-main">
       {navBarItems.map((item) => {
@@ -42,6 +30,27 @@ export default function Navbar() {
           </Link>
         );
       })}
+      {!loading && (
+        <Fragment>
+          {isAuthenticated
+            ? navBarItems.push(guestLinks)
+            : navBarItems.push(guestLinks)}
+        </Fragment>
+      )}
     </nav>
   );
-}
+};
+
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+//  connect whatever compenet you give me to the redux store using whatever maptStatetoProps says
+export default connect(mapStateToProps, { logout })(Navbar);

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import propTypes from "prop-types";
+import { login } from "../../actions/auth";
+import PropTypes from "prop-types";
 
-export default function LogIn() {
+export function LogIn({ login, isAuthenticated }) {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -13,8 +17,14 @@ export default function LogIn() {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
-    console.log("success");
+    e.preventDefault();
+    console.log(email + password);
+    login(email, password);
   };
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className="user-form-group_wrapper">
       {" "}
@@ -51,3 +61,14 @@ export default function LogIn() {
     </div>
   );
 }
+
+LogIn.prototype = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(LogIn);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./CSS/App.css";
 import UserList from "./Components/User/UserList";
@@ -12,10 +12,20 @@ import MoviePosterBackground from "./Components/Background/MoviePosterBackground
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
 import Alert from "./Components/layout/Alert";
 //Redux
+import { loadUser } from "./actions/auth";
 import { Provider } from "react-redux";
+import setAuthToken from "./Utilities/setAuthToken";
 import store from "./store";
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>
