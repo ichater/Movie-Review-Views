@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const navBarItems = [
   {
@@ -32,7 +33,7 @@ export const guestLinks = [
   {
     id: 4,
     name: "Sign In",
-    link: "/signin",
+    link: "/login",
   },
   {
     id: 5,
@@ -41,14 +42,36 @@ export const guestLinks = [
   },
 ];
 
-export const authLinks = ({ logout }) => {
+export const guestNavDisplay = (setNavBarItem, navbarItem) => {
   return (
-    <div className="navbar-item">
-      {" "}
-      <a onClick={logout} href="#!">
-        <i className="fas fa-sign-out-alt"></i>{" "}
-        <span className="hide-sm">Log Out</span>
-      </a>
-    </div>
+    <>
+      {guestLinks.map((item) => {
+        return (
+          <Link
+            to={item.link}
+            className={
+              item.id === navbarItem ? "navbar-item-selected" : "navbar-item"
+            }
+            onClick={() => {
+              setNavBarItem(item.id);
+            }}
+          >
+            {item.name}
+          </Link>
+        );
+      })}
+    </>
   );
 };
+
+// export const authLinks = ({ logout }) => {
+//   return (
+//     <div className="navbar-item">
+//       {" "}
+//       <a onClick={logout} href="#!">
+//         <i className="fas fa-sign-out-alt"></i>{" "}
+//         <span className="hide-sm">Log Out</span>
+//       </a>
+//     </div>
+//   );
+// };

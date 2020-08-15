@@ -10,7 +10,10 @@ import MovieContainer from "./Components/MovieList/MovieContainer";
 import UserPageContainer from "./Components/User/UserPageContainer";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
+import DashBoard from "./Components/Dashboard/Dashboard";
+import PrivateRoute from "./Components/Routing/PrivateRoute";
 import Alert from "./Components/layout/Alert";
+
 //Redux
 import { loadUser } from "./actions/auth";
 import { Provider } from "react-redux";
@@ -40,8 +43,9 @@ function App() {
         <section>
           <Alert />
           <Switch>
-            <Route path="/signin" exact component={LogIn} />
+            <Route path="/login" exact component={LogIn} />
             <Route path="/register" exact component={Register} />
+            <PrivateRoute path="/DashBoard" exact component={DashBoard} />
           </Switch>
         </section>
         <Route path="/users/:id" exact component={UserPageContainer} />

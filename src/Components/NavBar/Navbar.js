@@ -3,15 +3,23 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-import { navBarItems, guestLinks, authLinks } from "./NavBarItems";
+import { navBarItems, guestNavDisplay, authLinks } from "./NavBarItems";
 
 //{ auth: { isAuthenticated, loading }, logout }
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const [navbarItem, setNavBarItem] = useState();
 
-  // const authLinks =()
-
-  // const guestLinks=()
+  const authLinks = () => {
+    return (
+      <div className="navbar-item">
+        {" "}
+        <a onClick={logout} href="#!">
+          <i className="fas fa-sign-out-alt"></i>{" "}
+          <span className="hide-sm">Log Out</span>
+        </a>
+      </div>
+    );
+  };
 
   return (
     <nav className="navbar-main">
@@ -33,8 +41,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       {!loading && (
         <Fragment>
           {isAuthenticated
-            ? navBarItems.push(guestLinks)
-            : navBarItems.push(guestLinks)}
+            ? authLinks()
+            : guestNavDisplay(setNavBarItem, navbarItem)}
         </Fragment>
       )}
     </nav>
