@@ -11,13 +11,28 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const authLinks = () => {
     return (
-      <div className="navbar-item">
+      <>
         {" "}
-        <a onClick={logout} href="#!">
-          <i className="fas fa-sign-out-alt"></i>{" "}
-          <span className="hide-sm">Log Out</span>
-        </a>
-      </div>
+        <Link
+          to="/dashboard"
+          className={
+            navbarItem === "Dashboard" ? "navbar-item-selected" : "navbar-item"
+          }
+          onClick={() => {
+            setNavBarItem("Dashboard");
+          }}
+        >
+          <i className="fas fa-user"></i>{" "}
+          <span className="hide-sm">Dashboard</span>
+        </Link>
+        <div className="navbar-item">
+          {" "}
+          <a onClick={logout} href="#!">
+            <i className="fas fa-sign-out-alt"></i>{" "}
+            <span className="hide-sm">Log Out</span>
+          </a>
+        </div>
+      </>
     );
   };
 

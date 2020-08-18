@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getCurrentProfile } from "../../actions/profile";
+import Spinner from "../layout/Spinner";
 
-const Dashboard = (props) => {
-  return <div>Dashboard</div>;
+const Dashboard = ({
+  getCurrentProfile,
+  auth: { user },
+  profile: { profile, loading },
+}) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, []);
+  return loading && profile === null ? (
+    <Spinner />
+  ) : (
+    <>
+      <h1> Dashboard </h1>
+      <p>
+        <i className="fas fa-user"></i> Welcome {user && user.username}
+      </p>
+      {profile !== null ? <>Has Profile </> : <> Does not have Profile</>}
+    </>
+  );
 };
 
-Dashboard.propTypes = {};
+Dashboard.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+};
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);

@@ -10,3 +10,10 @@
 body {
   background-color: black;
 }
+
+/* global CSS state */
+@media screen and (max-width: 750px) {
+  .hide-sm {
+    display: none;
+  }
+}
