@@ -9,7 +9,7 @@
 }
 
 .background-movie-wrapper {
-  position: absolute;
+  position: fixed;
 
   bottom: 50px;
   left: 5%;

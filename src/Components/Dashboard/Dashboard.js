@@ -27,7 +27,7 @@ const Dashboard = ({
         <>
           {" "}
           <p>You have not yuet set up a profile, Please add some info</p>
-          <Link to="/create-profile"> Create Profile </Link>
+          <Link to="/createprofile"> Create Profile </Link>
         </>
       )}
     </>

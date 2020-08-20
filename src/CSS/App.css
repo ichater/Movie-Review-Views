@@ -6,6 +6,7 @@
 @import "./Background.css";
 @import "./LoginRegister.css";
 @import "./Alert.css";
+@import "./CreateProfile.css";
 
 body {
   background-color: black;

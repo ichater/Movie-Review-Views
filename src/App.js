@@ -11,6 +11,7 @@ import UserPageContainer from "./Components/User/UserPageContainer";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
 import DashBoard from "./Components/Dashboard/Dashboard";
+import CreateProfile from "./Components/Profile-Form/CreateProfile";
 import PrivateRoute from "./Components/Routing/PrivateRoute";
 import Alert from "./Components/layout/Alert";
 
@@ -46,8 +47,14 @@ function App() {
             <Route path="/login" exact component={LogIn} />
             <Route path="/register" exact component={Register} />
             <PrivateRoute path="/DashBoard" exact component={DashBoard} />
+            <PrivateRoute
+              path="/CreateProfile"
+              exact
+              component={CreateProfile}
+            />
           </Switch>
         </section>
+
         <Route path="/users/:id" exact component={UserPageContainer} />
         <Route path="/movielist/:id" exact component={UserMovieListContainer} />
       </Router>

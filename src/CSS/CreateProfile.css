@@ -1,0 +1,32 @@
+.create-profile-form-wrapper {
+  width: 60%;
+  margin: auto;
+
+  background-color: white;
+}
+
+.profile-form-group {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.profile-input {
+  margin-right: 20%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+input.profile-input {
+  height: 1.5rem;
+}
+
+.profile-label {
+  margin-left: auto;
+  display: flex;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.profile-input-header {
+  padding-left: 25%;
+}
