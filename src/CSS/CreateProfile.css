@@ -30,3 +30,17 @@ input.profile-input {
 .profile-input-header {
   padding-left: 25%;
 }
+
+.profile-input-button {
+  width: fit-content;
+  padding: 1rem;
+  margin: auto;
+  align-items: center;
+  background-color: rgba(204, 255, 255, 0.5);
+  border-radius: 10px;
+  border: 1px solid rgb(204, 255, 255);
+}
+.profile-input-button:hover {
+  cursor: pointer;
+  background-color: rgb(204, 255, 255);
+}
