@@ -14,20 +14,9 @@ const EditProfile = ({
     location: "",
     description: "",
     likesAboutMovies: "",
-    filmQuotes: {
-      quote: "",
-      film: "",
-    },
   });
 
-  const {
-    location,
-    description,
-    likesAboutMovies,
-
-    quote,
-    film,
-  } = formData;
+  const { location, description, likesAboutMovies } = formData;
 
   useEffect(() => {
     getCurrentProfile();
@@ -88,6 +77,11 @@ const EditProfile = ({
             cols="50"
           />
         </div>
+        <input
+          type="submit"
+          value="Update profile"
+          className="profile-input-button"
+        />
       </form>
     </div>
   );

@@ -9,20 +9,9 @@ const CreateProfile = ({ createProfile, history }) => {
     location: "",
     description: "",
     likesAboutMovies: "",
-    filmQuotes: {
-      quote: "",
-      film: "",
-    },
   });
 
-  const {
-    location,
-    description,
-    likesAboutMovies,
-
-    quote,
-    film,
-  } = formData;
+  const { location, description, likesAboutMovies } = formData;
 
   const onChange = (e) =>
     setFormData({
@@ -72,37 +61,6 @@ const CreateProfile = ({ createProfile, history }) => {
             cols="50"
           />
         </div>
-        <h3 className="profile-input-header">
-          Add a Film Quote (Write logic seperating this from the above )
-        </h3>
-        <div className="profile-form-group">
-          <label label className="profile-label">
-            Film
-          </label>
-          <input
-            value={film}
-            placeholder={film}
-            name="film"
-            onChange={(e) => onChange(e)}
-            className="profile-input"
-          />
-        </div>
-        <div className="profile-form-group">
-          <label label className="profile-label">
-            Quote
-          </label>
-          <input
-            value={quote}
-            name="quote"
-            onChange={(e) => onChange(e)}
-            className="profile-input"
-          />
-        </div>
-        <input
-          type="submit"
-          value="Submit all data(Add a quote)"
-          className="profile-input-button"
-        />
       </form>
     </div>
   );
