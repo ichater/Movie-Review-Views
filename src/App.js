@@ -10,6 +10,7 @@ import MovieContainer from "./Components/MovieList/MovieContainer";
 import UserPageContainer from "./Components/User/UserPageContainer";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
+import EditProfile from "./Components/Profile-Form/EditProfile";
 import DashBoard from "./Components/Dashboard/Dashboard";
 import CreateProfile from "./Components/Profile-Form/CreateProfile";
 import PrivateRoute from "./Components/Routing/PrivateRoute";
@@ -52,6 +53,7 @@ function App() {
               exact
               component={CreateProfile}
             />
+            <PrivateRoute exact path="/edit-profile" component={EditProfile} />
           </Switch>
         </section>
 
