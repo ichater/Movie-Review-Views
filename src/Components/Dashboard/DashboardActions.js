@@ -7,7 +7,7 @@ const DashboardActions = () => {
       <Link to="/edit-profile">
         <i class="fas fa-user-circle"></i>Edit Profile
       </Link>
-      <Link to="/add-quote">
+      <Link to="/add-movie-quote">
         <i class="fas fa-graduation-cap"></i>Add Movie Quote
       </Link>
     </div>
