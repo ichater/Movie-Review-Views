@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { createProfile } from "../../actions/profile";
 
-const CreateProfile = (props) => {
+const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     location: "",
     description: "",
@@ -28,9 +30,14 @@ const CreateProfile = (props) => {
       [e.target.name]: e.target.value,
     });
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    createProfile(formData, history);
+  };
+
   return (
     <div className="create-profile-form-wrapper">
-      <form>
+      <form onSubmit={(e) => onSubmit(e)}>
         <h3 className="profile-input-header">About you</h3>
         <div className="profile-form-group">
           <label className="profile-label">Location:</label>
@@ -65,10 +72,9 @@ const CreateProfile = (props) => {
             cols="50"
           />
         </div>
-        <div className="profile-input-button">Add/Update Profile</div>
-      </form>
-      <form>
-        <h3 className="profile-input-header">Add a Film Quote</h3>
+        <h3 className="profile-input-header">
+          Add a Film Quote (Write logic seperating this from the above )
+        </h3>
         <div className="profile-form-group">
           <label label className="profile-label">
             Film
@@ -92,12 +98,18 @@ const CreateProfile = (props) => {
             className="profile-input"
           />
         </div>
-        <div className="profile-input-button">Add a quote</div>
+        <input
+          type="submit"
+          value="Submit all data(Add a quote)"
+          className="profile-input-button"
+        />
       </form>
     </div>
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+};
 
-export default CreateProfile;
+export default connect(null, { createProfile })(withRouter(CreateProfile));

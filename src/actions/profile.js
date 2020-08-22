@@ -24,6 +24,7 @@ export const createProfile = (formData, history, edit = false) => async (
   dispatch
 ) => {
   try {
+    console.log("trying");
     const config = {
       headers: {
         "Content-Type": "application/json",
