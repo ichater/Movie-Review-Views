@@ -69,7 +69,7 @@ export const addMovieQuote = (formData, history) => async (dispatch) => {
       type: UPDATE_PROFILE,
       payload: res.data,
     });
-    dispatch(setAlert("Experience added", "success"));
+    dispatch(setAlert("Movie Quote added", "success"));
 
     history.push("/dashboard");
   } catch (err) {

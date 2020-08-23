@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
+import FilmQuotes from "./FilmQuotes";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -14,27 +15,29 @@ const Dashboard = ({
   useEffect(() => {
     getCurrentProfile();
   }, []);
+  console.log(profile);
   return loading && profile === null ? (
     <Spinner />
   ) : (
-    <>
+    <div className="create-profile-form-wrapper">
       <h1> Dashboard </h1>
       <p>
         <i className="fas fa-user"></i> Welcome {user && user.username}
       </p>
+      <FilmQuotes filmQuotes={profile.filmQuotes} />
 
       {profile !== null ? (
         <>
           <DashboardActions />{" "}
         </>
       ) : (
-        <>
+        <div>
           {" "}
           <p>You have not yuet set up a profile, Please add some info</p>
           <Link to="/createprofile"> Create Profile </Link>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

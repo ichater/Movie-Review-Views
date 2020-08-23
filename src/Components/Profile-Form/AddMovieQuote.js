@@ -55,6 +55,9 @@ const AddMovieQuote = ({ addMovieQuote, history }) => {
             value="Add a quote"
             className="profile-input-button"
           />
+          <Link to="/dashboard" className="profile-input-button">
+            Back
+          </Link>
         </form>
       </div>
     </div>

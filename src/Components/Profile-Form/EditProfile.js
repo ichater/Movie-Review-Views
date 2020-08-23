@@ -82,6 +82,9 @@ const EditProfile = ({
           value="Update profile"
           className="profile-input-button"
         />
+        <Link to="/dashboard" className="profile-input-button">
+          Back
+        </Link>
       </form>
     </div>
   );
