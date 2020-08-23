@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { deleteQuote } from "../../actions/profile";
 
-const FilmQuotes = ({ filmQuotes }) => {
+const FilmQuotes = ({ filmQuotes, deleteQuote }) => {
   return (
     <Fragment>
       <h2>Place holder for film quotes</h2>
@@ -18,6 +19,7 @@ const FilmQuotes = ({ filmQuotes }) => {
             <tr key={e._id}>
               <td>{e.film}</td>
               <td>"{e.quote}"</td>
+              <td onClick={() => deleteQuote(e._id)}> Delete </td>
             </tr>
           ))}
         </tbody>
@@ -26,6 +28,8 @@ const FilmQuotes = ({ filmQuotes }) => {
   );
 };
 
-FilmQuotes.propTypes = {};
+FilmQuotes.propTypes = {
+  deleteQuote: PropTypes.func.isRequired,
+};
 
-export default FilmQuotes;
+export default connect(null, { deleteQuote })(FilmQuotes);
