@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../actions/profile";
+import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
 import FilmQuotes from "./FilmQuotes";
@@ -11,11 +11,12 @@ const Dashboard = ({
   getCurrentProfile,
   auth: { user },
   profile: { profile, loading },
+  deleteAccount,
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, []);
-  console.log(profile);
+
   return loading && profile === null ? (
     <Spinner />
   ) : (
@@ -24,8 +25,8 @@ const Dashboard = ({
       <p>
         <i className="fas fa-user"></i> Welcome {user && user.username}
       </p>
-      <FilmQuotes filmQuotes={profile.filmQuotes} />
-
+      {profile ? <FilmQuotes filmQuotes={profile.filmQuotes} /> : null}
+      <div onClick={() => deleteAccount()}>Delete profile</div>
       {profile !== null ? (
         <>
           <DashboardActions />{" "}
@@ -45,6 +46,7 @@ Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -52,4 +54,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);

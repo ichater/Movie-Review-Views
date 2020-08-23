@@ -61,6 +61,11 @@ const CreateProfile = ({ createProfile, history }) => {
             cols="50"
           />
         </div>
+        <input
+          type="submit"
+          value="Update profile"
+          className="profile-input-button"
+        />
       </form>
     </div>
   );
