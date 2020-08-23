@@ -25,7 +25,9 @@ const Dashboard = ({
       <p>
         <i className="fas fa-user"></i> Welcome {user && user.username}
       </p>
-      {profile ? <FilmQuotes filmQuotes={profile.filmQuotes} /> : null}
+      {profile["filmQuotes"] > 0 ? (
+        <FilmQuotes filmQuotes={profile.filmQuotes} />
+      ) : null}
       <div onClick={() => deleteAccount()}>Delete profile</div>
       {profile !== null ? (
         <>
@@ -34,7 +36,7 @@ const Dashboard = ({
       ) : (
         <div>
           {" "}
-          <p>You have not yuet set up a profile, Please add some info</p>
+          <p>You have not yet set up a profile, Please add some info</p>
           <Link to="/createprofile"> Create Profile </Link>
         </div>
       )}
