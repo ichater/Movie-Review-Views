@@ -14,19 +14,9 @@ export const navBarItems = [
   },
   {
     id: 3,
-    name: "User Search",
-    link: "/users",
+    name: "View Profiles",
+    link: "/profiles",
   },
-  //   {
-  //     id: 4,
-  //     name: "Sign In",
-  //     link: "/signin",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Register",
-  //     link: "/register",
-  //   },
 ];
 
 export const guestLinks = [

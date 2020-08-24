@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./CSS/App.css";
 import UserList from "./Components/User/UserList";
-import CreateUser from "./Components/User/CreateUser";
 import Navbar from "./Components/NavBar/Navbar";
 import LogIn from "./Components/LogIn/LogIn";
 import Register from "./Components/LogIn/Register";
 import MovieContainer from "./Components/MovieList/MovieContainer";
 import UserPageContainer from "./Components/User/UserPageContainer";
+import Pofiles from "./Components/Profiles/Profiles";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
 import EditProfile from "./Components/Profile-Form/EditProfile";
@@ -41,8 +41,8 @@ function App() {
         {/* <br /> */}
         {/* <Route path="/" exact component={Navbar} /> */}
         <Route path="/MovieSearch" exact component={MovieContainer} />
-        <Route path="/users" exact component={UserList} />
-        <Route path="/user/add" exact component={CreateUser} />
+        <Route path="/profiles" exact component={Pofiles} />
+
         <section>
           <Alert />
           <Switch>

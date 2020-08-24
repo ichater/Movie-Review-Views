@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-import { navBarItems, guestNavDisplay, authLinks } from "./NavBarItems";
+import { navBarItems, guestNavDisplay } from "./NavBarItems";
 
 //{ auth: { isAuthenticated, loading }, logout }
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
