@@ -11,7 +11,7 @@ export default function UserPage({ getUser, id }) {
     };
 
     setUserFunction();
-  }, []);
+  }, [getUser, id]);
 
   const content = user.username ? (
     <div className="user-page-wrapper">

@@ -15,7 +15,7 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []);
+  }, [getCurrentProfile]);
 
   const filmQuoteDisplay = (profile) => {
     return profile.filmQuotes > 0 ? (

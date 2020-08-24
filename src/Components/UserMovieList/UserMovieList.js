@@ -7,10 +7,9 @@ export default function UserMovieList({ getUser, id }) {
     const setUserFunction = async () => {
       const user = await getUser("movielist", id);
       setUser(user);
-      console.log(user);
     };
     setUserFunction();
-  }, []);
+  }, [getUser, id]);
 
   const content = user.username ? (
     <div className="user-page-wrapper">

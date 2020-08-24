@@ -14,7 +14,7 @@
 
 .main-user-table_header-row th:nth-child(1) {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .main-user-table_user-row td:nth-child(2) {

@@ -27,7 +27,7 @@ const EditProfile = ({
         loading || !profile.likesAboutMovies ? "" : profile.likesAboutMovies,
       film: loading || !profile.film ? "" : profile.film,
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile, profile]);
 
   const onChange = (e) =>
     setFormData({

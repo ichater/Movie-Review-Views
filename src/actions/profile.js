@@ -151,8 +151,6 @@ export const deleteQuote = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure?")) {
     try {
-      const res = await axios.delete(`/profile`);
-
       dispatch({
         type: CLEAR_PROFILE,
       });

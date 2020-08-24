@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./CSS/App.css";
-import UserList from "./Components/User/UserList";
 import Navbar from "./Components/NavBar/Navbar";
 import LogIn from "./Components/LogIn/LogIn";
 import Register from "./Components/LogIn/Register";
