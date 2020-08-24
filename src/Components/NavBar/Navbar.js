@@ -41,6 +41,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       {navBarItems.map((item) => {
         return (
           <Link
+            key={item.id}
             to={item.link}
             className={
               item.id === navbarItem ? "navbar-item-selected" : "navbar-item"
