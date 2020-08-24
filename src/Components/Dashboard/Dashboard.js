@@ -17,6 +17,14 @@ const Dashboard = ({
     getCurrentProfile();
   }, []);
 
+  const filmQuoteDisplay = (profile) => {
+    return profile.filmQuotes > 0 ? (
+      <FilmQuotes filmQuotes={profile.filmQuotes} />
+    ) : (
+      <p>No film Quotes to Display</p>
+    );
+  };
+
   return loading && profile === null ? (
     <Spinner />
   ) : (
@@ -25,9 +33,7 @@ const Dashboard = ({
       <p>
         <i className="fas fa-user"></i> Welcome {user && user.username}
       </p>
-      {profile["filmQuotes"] > 0 ? (
-        <FilmQuotes filmQuotes={profile.filmQuotes} />
-      ) : null}
+      {profile ? filmQuoteDisplay(profile) : null}
       <div onClick={() => deleteAccount()}>Delete profile</div>
       {profile !== null ? (
         <>
