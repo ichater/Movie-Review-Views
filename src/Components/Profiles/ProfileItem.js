@@ -3,13 +3,18 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const ProfileItem = ({
-  profile: { _id, user, description, filmQuotes, likesAboutMovies },
+  profile: {
+    user: { username, _id },
+    description,
+    filmQuotes,
+    likesAboutMovies,
+  },
 }) => {
   return (
     <div>
       {" "}
-      <div>{user.username}</div>
-      <Link to={`/profile${_id}`}> View Profile </Link>
+      <div>{username}</div>
+      <Link to={`/profile/${_id}`}> View Profile </Link>
     </div>
   );
 };

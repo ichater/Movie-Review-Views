@@ -7,6 +7,7 @@ import Register from "./Components/LogIn/Register";
 import MovieContainer from "./Components/MovieList/MovieContainer";
 import UserPageContainer from "./Components/User/UserPageContainer";
 import Pofiles from "./Components/Profiles/Profiles";
+import Pofile from "./Components/Profile/Profile";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
 import EditProfile from "./Components/Profile-Form/EditProfile";
@@ -41,7 +42,7 @@ function App() {
         {/* <Route path="/" exact component={Navbar} /> */}
         <Route path="/MovieSearch" exact component={MovieContainer} />
         <Route path="/profiles" exact component={Pofiles} />
-
+        <Route path="/profile/:id" exact component={Pofile} />
         <section>
           <Alert />
           <Switch>
