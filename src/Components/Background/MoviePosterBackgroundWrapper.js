@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { posterArr } from "./posterArr";
-import useInterval from "./PosterIntevalFunction";
+import useInterval from "../../Utilities/IntervalFunction";
 import MoviePosterBackground from "./MoviePosterBackground";
 
 const getRandomInt = (max) => {

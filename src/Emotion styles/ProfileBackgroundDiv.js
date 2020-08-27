@@ -6,4 +6,5 @@ export const ProfileBackgroundDisplayDiv = css`
   width: 60%;
   margin: auto;
   background-color: white;
+  padding-bottom: 10%;
 `;

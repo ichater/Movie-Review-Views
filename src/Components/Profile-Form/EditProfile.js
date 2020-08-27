@@ -38,7 +38,7 @@ const EditProfile = ({
   const onSubmit = (e) => {
     e.preventDefault();
     createProfile(formData, history, true);
-    alert("hola!");
+
     return <Redirect to="/dashboard" />;
   };
 

@@ -11,6 +11,7 @@ import { ProfileBackgroundDisplayDiv } from "../../Emotion styles/ProfileBackgro
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import ProfileContent from "./ProfileContent";
+import QuoteDisplay from "./QuoteDisplay";
 
 const Profile = ({
   getProfileById,
@@ -36,10 +37,16 @@ const Profile = ({
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" css={InputButton}>
-                Edit Profile
-              </Link>
+              <Fragment>
+                <Link to="/edit-profile" css={InputButton}>
+                  Edit Profile
+                </Link>{" "}
+                <Link css={InputButton} to="/add-movie-quote">
+                  <i className="fas fa-graduation-cap"></i>Add Movie Quote
+                </Link>
+              </Fragment>
             )}
+          <QuoteDisplay filmQuotes={profile.filmQuotes} />
         </div>
       )}
     </Fragment>
