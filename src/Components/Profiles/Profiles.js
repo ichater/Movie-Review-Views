@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getProfiles } from "../../actions/profile";
 import ProfileItem from "./ProfileItem";
+import { Button } from "../../Emotion styles/Button";
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
@@ -15,7 +16,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   const mainDisplayDiv = css`
     width: 60%;
     margin: auto;
-    background-color: rgba(102, 255, 102, 0.8);
+    background-color: white;
   `;
 
   return (
