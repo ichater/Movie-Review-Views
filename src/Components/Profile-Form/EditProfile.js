@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
@@ -27,7 +27,7 @@ const EditProfile = ({
         loading || !profile.likesAboutMovies ? "" : profile.likesAboutMovies,
       film: loading || !profile.film ? "" : profile.film,
     });
-  }, [loading, getCurrentProfile, profile]);
+  }, []);
 
   const onChange = (e) =>
     setFormData({
@@ -38,6 +38,8 @@ const EditProfile = ({
   const onSubmit = (e) => {
     e.preventDefault();
     createProfile(formData, history, true);
+    alert("hola!");
+    return <Redirect to="/dashboard" />;
   };
 
   return (
