@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getProfiles } from "../../actions/profile";
 import ProfileItem from "./ProfileItem";
-import { Button } from "../../Emotion styles/Button";
+import { ProfileBackgroundDisplayDiv } from "../../Emotion styles/ProfileBackgroundDiv";
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
@@ -13,19 +13,13 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     getProfiles();
   }, [getProfiles]);
 
-  const mainDisplayDiv = css`
-    width: 60%;
-    margin: auto;
-    background-color: white;
-  `;
-
   return (
     <Fragment>
       {loading ? (
         <Spinner />
       ) : (
         <Fragment>
-          <div css={mainDisplayDiv}>
+          <div css={ProfileBackgroundDisplayDiv}>
             <h1> Profiles </h1>
             <p>Browse other film viewers profiles</p>
             <div>

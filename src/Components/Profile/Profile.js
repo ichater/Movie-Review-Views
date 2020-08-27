@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getProfileById } from "../../actions/profile";
-import ProfileTop from "./ProfileTop";
-import ProfileBottom from "./ProfileBottom";
+import { InputButton } from "../../Emotion styles/InputButton";
+
+import { ProfileBackgroundDisplayDiv } from "../../Emotion styles/ProfileBackgroundDiv";
+// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
+import ProfileContent from "./ProfileContent";
 
 const Profile = ({
   getProfileById,
@@ -22,23 +27,20 @@ const Profile = ({
       {profile === null || loading ? (
         <Spinner />
       ) : (
-        <Fragment>
-          profile{" "}
-          <Link to="/profiles" className="profile-input-button">
+        <div css={ProfileBackgroundDisplayDiv}>
+          <h3>{profile.user.username}</h3>
+          <ProfileContent profile={profile} />
+          <Link to="/profiles" css={InputButton}>
             Back
           </Link>
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="profile-input-button">
+              <Link to="/edit-profile" css={InputButton}>
                 Edit Profile
               </Link>
             )}
-          <div>
-            <ProfileTop profile={profile} />
-            <ProfileBottom profile={profile} />
-          </div>
-        </Fragment>
+        </div>
       )}
     </Fragment>
   );
