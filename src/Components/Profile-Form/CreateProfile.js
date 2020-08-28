@@ -11,7 +11,7 @@ const CreateProfile = ({ createProfile, history }) => {
     likesAboutMovies: "",
   });
 
-  const { location, description, likesAboutMovies } = formData;
+  const { location, description, likesAboutMovies, avatar } = formData;
 
   const onChange = (e) =>
     setFormData({
@@ -33,6 +33,16 @@ const CreateProfile = ({ createProfile, history }) => {
           <input
             value={location}
             name="location"
+            onChange={(e) => onChange(e)}
+            typx="text"
+            className="profile-input"
+          ></input>
+        </div>
+        <div className="profile-form-group">
+          <label className="profile-label">Avatar (image address):</label>
+          <input
+            value={avatar}
+            name="avatar"
             onChange={(e) => onChange(e)}
             typx="text"
             className="profile-input"
