@@ -16,7 +16,7 @@ const EditProfile = ({
     likesAboutMovies: "",
   });
 
-  const { location, description, likesAboutMovies } = formData;
+  const { location, description, likesAboutMovies, avatar } = formData;
 
   useEffect(() => {
     getCurrentProfile();
@@ -26,6 +26,7 @@ const EditProfile = ({
       likesAboutMovies:
         loading || !profile.likesAboutMovies ? "" : profile.likesAboutMovies,
       film: loading || !profile.film ? "" : profile.film,
+      avatar: loading || !profile.avatar ? "" : profile.avatar,
     });
   }, []);
 
@@ -53,6 +54,16 @@ const EditProfile = ({
             name="location"
             onChange={(e) => onChange(e)}
             typx="text"
+            className="profile-input"
+          ></input>
+        </div>
+        <div className="profile-form-group">
+          <label className="profile-label">Avatar (image address):</label>
+          <input
+            value={avatar}
+            name="avatar"
+            onChange={(e) => onChange(e)}
+            type="text"
             className="profile-input"
           ></input>
         </div>

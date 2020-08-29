@@ -25,7 +25,7 @@ const ProfileItem = ({
     display: flex;
     flex-direction: column;
   `;
-
+  console.log(filmQuotes);
   return (
     <div>
       <Link css={profileWrapper} to={`/profile/${_id}`}>
@@ -39,7 +39,7 @@ const ProfileItem = ({
         />
         <div>{username}</div>
         <div css={profileQuotesWrapper}>
-          {filmQuotes[0].film !== "" ? (
+          {filmQuotes[0].film !== "" && filmQuotes.length > 0 ? (
             <Fragment>
               <span>"{filmQuotes[0].quote}"</span>
               <span>{filmQuotes[0].film}</span>

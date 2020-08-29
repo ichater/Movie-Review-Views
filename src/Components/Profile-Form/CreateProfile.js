@@ -44,7 +44,7 @@ const CreateProfile = ({ createProfile, history }) => {
             value={avatar}
             name="avatar"
             onChange={(e) => onChange(e)}
-            typx="text"
+            type="text"
             className="profile-input"
           ></input>
         </div>
