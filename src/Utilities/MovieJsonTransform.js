@@ -2,6 +2,7 @@ import axios from "axios";
 
 const fetchMovies = (titleSearch) => {
   return axios({
+    headers: null,
     method: "GET",
     url: `http://www.omdbapi.com/?apikey=47416750&s=${titleSearch}`,
   })
@@ -14,7 +15,6 @@ const fetchMovies = (titleSearch) => {
 
 //abstraction
 export const transformOmdbData = (data) => {
-  //{"Response":"False","Error":"Movie not found!"}
   if (data.Response === "False") {
     return [];
   }

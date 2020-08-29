@@ -9,6 +9,7 @@ export default function MovieSearch({ fetchMovies }) {
   const handleFetch = async () => {
     const movies = await fetchMovies(movieInputState);
     setMovieList(movies);
+    console.log(movies);
   };
 
   return (
