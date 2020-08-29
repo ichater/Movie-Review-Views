@@ -9,6 +9,7 @@ const ProfileItem = ({
   profile: {
     user: { username, _id },
     filmQuotes,
+    avatar,
   },
 }) => {
   const profileWrapper = css`
@@ -25,29 +26,39 @@ const ProfileItem = ({
     display: flex;
     flex-direction: column;
   `;
-  console.log(filmQuotes);
+
+  const filmQuoteDisplay = (filmQuotes) => {
+    return filmQuotes != null &&
+      filmQuotes.length > 0 &&
+      filmQuotes[0].film !== "" ? (
+      <Fragment>
+        <span>"{filmQuotes[0].quote}"</span>
+        <span>{filmQuotes[0].film}</span>
+      </Fragment>
+    ) : (
+      <Fragment>No Quotes to show</Fragment>
+    );
+  };
+
+  const avatarDisplay = (avatar) => {
+    return avatar != null
+      ? avatar
+      : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
+  };
+
   return (
     <div>
       <Link css={profileWrapper} to={`/profile/${_id}`}>
         {" "}
         <img
-          src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+          src={avatarDisplay(avatar)}
           alt="avatar"
           css={css`
             height: 50px;
           `}
         />
         <div>{username}</div>
-        <div css={profileQuotesWrapper}>
-          {filmQuotes[0].film !== "" && filmQuotes.length > 0 ? (
-            <Fragment>
-              <span>"{filmQuotes[0].quote}"</span>
-              <span>{filmQuotes[0].film}</span>
-            </Fragment>
-          ) : (
-            <Fragment>No Quotes to show</Fragment>
-          )}
-        </div>
+        <div css={profileQuotesWrapper}>{filmQuoteDisplay(filmQuotes)}</div>
       </Link>
     </div>
   );

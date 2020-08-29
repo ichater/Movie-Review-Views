@@ -9,6 +9,7 @@ const CreateProfile = ({ createProfile, history }) => {
     location: "",
     description: "",
     likesAboutMovies: "",
+    filmQuotes: [],
   });
 
   const { location, description, likesAboutMovies, avatar } = formData;
