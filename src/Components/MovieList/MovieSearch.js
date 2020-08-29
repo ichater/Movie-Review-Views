@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import MovieTable from "./MovieTable";
+import { connect } from "react-redux";
+import { fetchMovies } from "../../actions/movieSearch";
 
-export default function MovieSearch({ fetchMovies }) {
-  const [movieList, setMovieList] = useState([]);
+export function MovieSearch({ movies, fetchMovies }) {
   const [movieInputState, setMovieInputState] = useState();
   const [movieSortColumn, setMovieSortColumn] = useState();
 
   const handleFetch = async () => {
-    const movies = await fetchMovies(movieInputState);
-    setMovieList(movies);
-    console.log(movies);
+    await fetchMovies(movieInputState);
   };
 
   return (
@@ -41,9 +40,8 @@ export default function MovieSearch({ fetchMovies }) {
 
       <div className="movie-search-results_wrapper">
         <MovieTable
-          setMovieList={setMovieList}
           Checkbox
-          movieList={movieList}
+          movies={movies}
           movieSortColumn={movieSortColumn}
           setMovieSortColumn={setMovieSortColumn}
         />
@@ -51,3 +49,8 @@ export default function MovieSearch({ fetchMovies }) {
     </div>
   );
 }
+
+const mapStatetoProps = (state) => ({
+  movies: state.movies.items,
+});
+export default connect(mapStatetoProps, { fetchMovies })(MovieSearch);

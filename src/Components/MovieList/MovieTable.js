@@ -5,7 +5,7 @@ import MovieTableHeader from "./MovieTableHeader";
 import MovieTableBody from "./MovieTableBody";
 
 export default function MovieTable({
-  movieList,
+  movies,
   setMovieSortColumn,
   movieSortColumn,
 }) {
@@ -26,8 +26,8 @@ export default function MovieTable({
     }
   };
   toggleCols !== true
-    ? (sortedMovieList = movieList.sort(sortMovies))
-    : (sortedMovieList = movieList.sort(sortMovies).reverse());
+    ? (sortedMovieList = movies.sort(sortMovies))
+    : (sortedMovieList = movies.sort(sortMovies).reverse());
 
   return (
     <TableContainer>
@@ -35,7 +35,7 @@ export default function MovieTable({
         <MovieTableHeader
           toggle={toggle}
           setMovieSortColumn={setMovieSortColumn}
-          isPopulated={movieList.length > 0}
+          isPopulated={movies.length > 0}
         />
         <MovieTableBody
           sortedMovieList={sortedMovieList}
