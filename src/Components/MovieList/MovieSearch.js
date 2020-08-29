@@ -3,7 +3,7 @@ import MovieTable from "./MovieTable";
 import { connect } from "react-redux";
 import { fetchMovies } from "../../actions/movieSearch";
 
-export function MovieSearch({ movies, fetchMovies }) {
+export function MovieSearch({ fetchMovies }) {
   const [movieInputState, setMovieInputState] = useState();
   const [movieSortColumn, setMovieSortColumn] = useState();
 
@@ -40,8 +40,6 @@ export function MovieSearch({ movies, fetchMovies }) {
 
       <div className="movie-search-results_wrapper">
         <MovieTable
-          Checkbox
-          movies={movies}
           movieSortColumn={movieSortColumn}
           setMovieSortColumn={setMovieSortColumn}
         />
@@ -50,7 +48,4 @@ export function MovieSearch({ movies, fetchMovies }) {
   );
 }
 
-const mapStatetoProps = (state) => ({
-  movies: state.movies.items,
-});
-export default connect(mapStatetoProps, { fetchMovies })(MovieSearch);
+export default connect(null, { fetchMovies })(MovieSearch);

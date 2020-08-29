@@ -3,12 +3,9 @@ import React, { useState } from "react";
 import { TableContainer, Table } from "@material-ui/core";
 import MovieTableHeader from "./MovieTableHeader";
 import MovieTableBody from "./MovieTableBody";
+import { connect } from "react-redux";
 
-export default function MovieTable({
-  movies,
-  setMovieSortColumn,
-  movieSortColumn,
-}) {
+export function MovieTable({ movies, setMovieSortColumn, movieSortColumn }) {
   const [toggleCols, setToggleCols] = useState(true);
 
   const toggle = () =>
@@ -45,3 +42,7 @@ export default function MovieTable({
     </TableContainer>
   );
 }
+const mapStatetoProps = (state) => ({
+  movies: state.movies.items,
+});
+export default connect(mapStatetoProps)(MovieTable);
