@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { sortItemsText, sortItemsNumber } from "../../Utilities/MenuToggle";
 import { TableContainer, Table } from "@material-ui/core";
 import MovieTableHeader from "./MovieTableHeader";
 import MovieTableBody from "./MovieTableBody";
@@ -14,12 +14,10 @@ export function MovieTable({ movies, setMovieSortColumn, movieSortColumn }) {
 
   const sortMovies = (a, b) => {
     if (movieSortColumn === "year") {
-      return a[movieSortColumn] - b[movieSortColumn];
+      return sortItemsNumber(a, b);
     }
     if (movieSortColumn === "title") {
-      const titleA = a.title.toUpperCase();
-      const titleB = b.title.toUpperCase();
-      return titleA < titleB ? -1 : 1;
+      return sortItemsText(a, b);
     }
   };
   toggleCols !== true
