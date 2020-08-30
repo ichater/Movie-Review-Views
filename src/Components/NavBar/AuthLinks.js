@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
 
-const AuthLinks = ({ navbarItem, setNavBarItem, logout }) => {
+const AuthLinks = ({ navbarItem, setNavBarItem, logout, mainNavDisplay }) => {
   return (
-    <>
+    <div css={mainNavDisplay}>
       <Link
         to="/posts"
         className={
@@ -35,7 +38,7 @@ const AuthLinks = ({ navbarItem, setNavBarItem, logout }) => {
           <span className="hide-sm">Log Out</span>
         </a>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,23 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-export const navBarItems = [
-  {
-    id: 1,
-    name: "Home",
-    link: "/",
-  },
-  {
-    id: 2,
-    name: "Movie Search",
-    link: "/moviesearch",
-  },
-  {
-    id: 3,
-    name: "View Profiles",
-    link: "/profiles",
-  },
-];
+// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
 
 export const guestLinks = [
   {
@@ -32,9 +17,16 @@ export const guestLinks = [
   },
 ];
 
-export const guestNavDisplay = (setNavBarItem, navbarItem) => {
+const guestNavDisplayWrapper = css`
+  margin-left: 50%;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
+
+const guestNavDisplay = ({ setNavBarItem, navbarItem }) => {
   return (
-    <>
+    <div css={guestNavDisplayWrapper}>
       {guestLinks.map((item) => {
         return (
           <Link
@@ -50,18 +42,8 @@ export const guestNavDisplay = (setNavBarItem, navbarItem) => {
           </Link>
         );
       })}
-    </>
+    </div>
   );
 };
 
-// export const authLinks = ({ logout }) => {
-//   return (
-//     <div className="navbar-item">
-//       {" "}
-//       <a onClick={logout} href="#!">
-//         <i className="fas fa-sign-out-alt"></i>{" "}
-//         <span className="hide-sm">Log Out</span>
-//       </a>
-//     </div>
-//   );
-// };
+export default guestNavDisplay;

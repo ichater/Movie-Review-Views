@@ -3,32 +3,60 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-import { navBarItems, guestNavDisplay } from "./NavBarItems";
-
+import GuestNavDisplay from "./GutstLinks";
 import AuthLinks from "./AuthLinks";
 
-//{ auth: { isAuthenticated, loading }, logout }
+// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
+
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const [navbarItem, setNavBarItem] = useState();
 
+  const navBarItems = [
+    {
+      id: 1,
+      name: "Home",
+      link: "/",
+    },
+    {
+      id: 2,
+      name: "Movie Search",
+      link: "/moviesearch",
+    },
+    {
+      id: 3,
+      name: "View Profiles",
+      link: "/profiles",
+    },
+  ];
+
+  const mainNavDisplay = css`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  `;
+
   return (
     <nav className="navbar-main">
-      {navBarItems.map((item) => {
-        return (
-          <Link
-            key={item.id}
-            to={item.link}
-            className={
-              item.id === navbarItem ? "navbar-item-selected" : "navbar-item"
-            }
-            onClick={() => {
-              setNavBarItem(item.id);
-            }}
-          >
-            {item.name}
-          </Link>
-        );
-      })}
+      <div css={mainNavDisplay}>
+        {navBarItems.map((item) => {
+          return (
+            <Link
+              key={item.id}
+              to={item.link}
+              className={
+                item.id === navbarItem ? "navbar-item-selected" : "navbar-item"
+              }
+              onClick={() => {
+                setNavBarItem(item.id);
+              }}
+            >
+              {item.name}
+            </Link>
+          );
+        })}
+      </div>
       {!loading && (
         <Fragment>
           {isAuthenticated ? (
@@ -36,9 +64,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               navbarItem={navbarItem}
               setNavBarItem={setNavBarItem}
               logout={logout}
+              mainNavDisplay={mainNavDisplay}
             />
           ) : (
-            guestNavDisplay(setNavBarItem, navbarItem)
+            <GuestNavDisplay
+              navbarItem={navbarItem}
+              setNavBarItem={setNavBarItem}
+            />
+            // guestNavDisplay(setNavBarItem, navbarItem)
           )}
         </Fragment>
       )}
