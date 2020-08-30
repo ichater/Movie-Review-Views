@@ -12,7 +12,18 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = () => {
     return (
       <>
-        {" "}
+        <Link
+          to="/posts"
+          className={
+            navbarItem === "Posts" ? "navbar-item-selected" : "navbar-item"
+          }
+          onClick={() => {
+            setNavBarItem("Posts");
+          }}
+        >
+          {" "}
+          Posts
+        </Link>{" "}
         <Link
           to="/dashboard"
           className={

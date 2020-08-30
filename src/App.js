@@ -8,6 +8,7 @@ import MovieContainer from "./Components/MovieList/MovieContainer";
 import UserPageContainer from "./Components/User/UserPageContainer";
 import Pofiles from "./Components/Profiles/Profiles";
 import Pofile from "./Components/Profile/Profile";
+import Posts from "./Components/Posts/Posts";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
 import EditProfile from "./Components/Profile-Form/EditProfile";
@@ -60,6 +61,7 @@ function App() {
               path="/add-movie-quote"
               component={AddMovieQuote}
             />
+            <PrivateRoute exact path="/posts" component={Posts} />
           </Switch>
         </section>
 

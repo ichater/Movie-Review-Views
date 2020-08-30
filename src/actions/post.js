@@ -1,4 +1,4 @@
-import { GET_POSTS, POST_ERROR } from ".types/types";
+import { GET_POSTS, POST_ERROR } from "./types";
 import axios from "axios";
 import { setAlert } from "./alert";
 
@@ -7,7 +7,7 @@ export const getPosts = () => async (dispatch) => {
   try {
     const res = await axios.get("/posts");
 
-    dispatch({ type: GET_POSTS, payload: data });
+    dispatch({ type: GET_POSTS, payload: res.data });
   } catch (err) {
     dispatch({
       type: POST_ERROR,
