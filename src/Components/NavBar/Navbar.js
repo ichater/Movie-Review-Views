@@ -5,47 +5,11 @@ import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 import { navBarItems, guestNavDisplay } from "./NavBarItems";
 
+import AuthLinks from "./AuthLinks";
+
 //{ auth: { isAuthenticated, loading }, logout }
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const [navbarItem, setNavBarItem] = useState();
-
-  const authLinks = () => {
-    return (
-      <>
-        <Link
-          to="/posts"
-          className={
-            navbarItem === "Posts" ? "navbar-item-selected" : "navbar-item"
-          }
-          onClick={() => {
-            setNavBarItem("Posts");
-          }}
-        >
-          {" "}
-          Posts
-        </Link>{" "}
-        <Link
-          to="/dashboard"
-          className={
-            navbarItem === "Dashboard" ? "navbar-item-selected" : "navbar-item"
-          }
-          onClick={() => {
-            setNavBarItem("Dashboard");
-          }}
-        >
-          <i className="fas fa-user"></i>{" "}
-          <span className="hide-sm">Dashboard</span>
-        </Link>
-        <div className="navbar-item">
-          {" "}
-          <a onClick={logout} href="#!">
-            <i className="fas fa-sign-out-alt"></i>{" "}
-            <span className="hide-sm">Log Out</span>
-          </a>
-        </div>
-      </>
-    );
-  };
 
   return (
     <nav className="navbar-main">
@@ -67,9 +31,15 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       })}
       {!loading && (
         <Fragment>
-          {isAuthenticated
-            ? authLinks()
-            : guestNavDisplay(setNavBarItem, navbarItem)}
+          {isAuthenticated ? (
+            <AuthLinks
+              navbarItem={navbarItem}
+              setNavBarItem={setNavBarItem}
+              logout={logout}
+            />
+          ) : (
+            guestNavDisplay(setNavBarItem, navbarItem)
+          )}
         </Fragment>
       )}
     </nav>
