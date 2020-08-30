@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-import GuestNavDisplay from "./GutstLinks";
+import GuestNavDisplay from "./GuestLinks";
 import AuthLinks from "./AuthLinks";
 
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
