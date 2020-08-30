@@ -14,7 +14,7 @@ export function MovieTable({ movies, setMovieSortColumn, movieSortColumn }) {
 
   const sortMovies = (a, b) => {
     if (movieSortColumn === "year") {
-      return sortItemsNumber(a, b);
+      return a[movieSortColumn] - b[movieSortColumn];
     }
     if (movieSortColumn === "title") {
       return sortItemsText(a, b);
