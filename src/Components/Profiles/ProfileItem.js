@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { avatarDisplay } from "../../Utilities/AvatarDisplay";
 
 const ProfileItem = ({
   profile: {
@@ -38,12 +39,6 @@ const ProfileItem = ({
     ) : (
       <Fragment>No Quotes to show</Fragment>
     );
-  };
-
-  const avatarDisplay = (avatar) => {
-    return avatar != null
-      ? avatar
-      : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
   };
 
   return (
