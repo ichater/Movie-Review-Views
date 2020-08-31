@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 
-const PostItem = () => {
-  return <div></div>;
+const PostItem = ({
+  auth,
+  post: { _id, test, name, likes, comments, date, avatar, text },
+}) => {
+  return <div>{text}}</div>;
 };
 
 PostItem.propTypes = {
