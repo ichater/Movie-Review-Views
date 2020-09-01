@@ -39,6 +39,7 @@ const PostItem = ({
   auth,
   post: { _id, test, name, likes, comments, user, date, avatar, text },
 }) => {
+  console.log(likes);
   return (
     <div css={postWrapper}>
       {" "}
@@ -66,7 +67,8 @@ const PostItem = ({
       </div>
       <div>
         <i className="fas fa-thumbs-up"></i>{" "}
-        <i className="fas fa-thumbs-down"></i>Likes: <span>Likes.Length</span>
+        {likes.length > 0 && <span>{likes.length}</span>}
+        <i className="fas fa-thumbs-down"></i>
       </div>
       <Link to={`/posts/${_id}`}>
         {" "}
@@ -75,7 +77,7 @@ const PostItem = ({
       </Link>
       {!auth.loading && user === auth.user._id && (
         <div>
-          <button> Delete button placeholder</button>
+          <button> X </button>
         </div>
       )}
     </div>
