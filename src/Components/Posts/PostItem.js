@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import { avatarDisplay } from "../../Utilities/AvatarDisplay";
+import { addLike, removeLike } from "../../actions/post";
 
 const postWrapper = css`
   width: 60%;
@@ -35,9 +36,24 @@ const textWrapper = css`
   padding: 1em;
   height: auto;
 `;
+
+const likeBtn = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid black;
+  border-radius: 25%;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 const PostItem = ({
+  addLike,
+  removeLike,
   auth,
-  post: { _id, test, name, likes, comments, user, date, avatar, text },
+  post: { id, text, name, likes, comments, user, date, avatar },
 }) => {
   console.log(likes);
   return (
@@ -65,12 +81,22 @@ const PostItem = ({
       <div>
         Date: <Moment format="DD/MM/YYYY">{date}</Moment>
       </div>
-      <div>
-        <i className="fas fa-thumbs-up"></i>{" "}
-        {likes.length > 0 && <span>{likes.length}</span>}
-        <i className="fas fa-thumbs-down"></i>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+        `}
+      >
+        <div css={likeBtn}>
+          <i className="fas fa-thumbs-up" />{" "}
+          {likes.length > 0 && <span>{likes.length}</span>}
+        </div>
+        <div css={likeBtn}>
+          <i className="fas fa-thumbs-down" />
+        </div>
       </div>
-      <Link to={`/posts/${_id}`}>
+      <Link to={`/posts/${id}`}>
         {" "}
         Discussion:{" "}
         {comments.length > 0 && <span>We have comments to work with</span>}
@@ -91,4 +117,4 @@ PostItem.propTypes = {
 
 const mapStateToProps = (state) => ({ auth: state.auth });
 
-export default connect(mapStateToProps, {})(PostItem);
+export default connect(mapStateToProps, { addLike, removeLike })(PostItem);
