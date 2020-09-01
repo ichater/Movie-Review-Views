@@ -53,7 +53,7 @@ const PostItem = ({
   addLike,
   removeLike,
   auth,
-  post: { id, text, name, likes, comments, user, date, avatar },
+  post: { _id, text, name, likes, comments, user, date, avatar },
 }) => {
   console.log(likes);
   return (
@@ -89,14 +89,14 @@ const PostItem = ({
         `}
       >
         <div css={likeBtn}>
-          <i className="fas fa-thumbs-up" />{" "}
-          {likes.length > 0 && <span>{likes.length}</span>}
+          <i className="fas fa-thumbs-up" onClick={(e) => addLike(_id)} />{" "}
+          <span>{likes.length > 0 ? likes.length : 0}</span>
         </div>
         <div css={likeBtn}>
-          <i className="fas fa-thumbs-down" />
+          <i className="fas fa-thumbs-down" onClick={(e) => removeLike(_id)} />
         </div>
       </div>
-      <Link to={`/posts/${id}`}>
+      <Link to={`/posts/${_id}`}>
         {" "}
         Discussion:{" "}
         {comments.length > 0 && <span>We have comments to work with</span>}
