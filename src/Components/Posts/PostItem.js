@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { css, jsx } from "@emotion/core";
 import { avatarDisplay } from "../../Utilities/AvatarDisplay";
 import { addLike, removeLike } from "../../actions/post";
+import { deleteButton } from "../../Emotion styles/InputButton";
 
 const postWrapper = css`
   width: 60%;
@@ -55,7 +56,6 @@ const PostItem = ({
   auth,
   post: { _id, text, name, likes, comments, user, date, avatar },
 }) => {
-  console.log(likes);
   return (
     <div css={postWrapper}>
       {" "}
@@ -90,7 +90,7 @@ const PostItem = ({
       >
         <div css={likeBtn}>
           <i className="fas fa-thumbs-up" onClick={(e) => addLike(_id)} />{" "}
-          <span>{likes.length > 0 ? likes.length : 0}</span>
+          <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
         </div>
         <div css={likeBtn}>
           <i className="fas fa-thumbs-down" onClick={(e) => removeLike(_id)} />
@@ -103,7 +103,7 @@ const PostItem = ({
       </Link>
       {!auth.loading && user === auth.user._id && (
         <div>
-          <button> X </button>
+          <div css={deleteButton}> X </div>
         </div>
       )}
     </div>
