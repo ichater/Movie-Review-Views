@@ -9,7 +9,7 @@ import UserPageContainer from "./Components/User/UserPageContainer";
 import Pofiles from "./Components/Profiles/Profiles";
 import Pofile from "./Components/Profile/Profile";
 import Posts from "./Components/Posts/Posts";
-import PostForm from "./Components/Posts/PostForm";
+import Post from "./Components/Post/Post";
 import MoviePosterBackground from "./Components/Background/MoviePosterBackgroundWrapper";
 import UserMovieListContainer from "./Components/UserMovieList/UserMovieListContainer";
 import EditProfile from "./Components/Profile-Form/EditProfile";
@@ -63,7 +63,7 @@ function App() {
               component={AddMovieQuote}
             />
             <PrivateRoute exact path="/posts" component={Posts} />
-            <PrivateRoute exact path="/postform" component={PostForm} />
+            <PrivateRoute exact path="/post" component={Post} />
           </Switch>
         </section>
 
