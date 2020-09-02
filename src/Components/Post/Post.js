@@ -21,7 +21,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
       <PostItem post={post} showActions={false} />
       <Link to="/posts" css={inputButton}>
         {" "}
-        Back{" "}
+        Back to Posts{" "}
       </Link>
     </Fragment>
   );
