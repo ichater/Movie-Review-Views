@@ -66,7 +66,7 @@ const PostItem = ({
           flex-direction: row;
         `}
       >
-        <div css={avatarNameWrapper}>
+        <Link to={`/profile/${user}`} css={avatarNameWrapper}>
           <img
             src={avatarDisplay(avatar)}
             alt="avatar"
@@ -76,7 +76,7 @@ const PostItem = ({
             `}
           />
           <span>{name}</span>
-        </div>
+        </Link>
         <div css={textWrapper}>{text}</div>
       </div>
       <div>

@@ -1,5 +1,6 @@
 import {
   GET_POSTS,
+  GET_POST,
   POST_ERROR,
   UPDATE_LIKES,
   DELETE_POST,
@@ -65,6 +66,19 @@ export const deletePost = (postId) => async (dispatch) => {
   }
 };
 
+export const getPost = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/posts");
+
+    dispatch({ type: GET_POST, payload: res.data });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 //add post
 export const addPost = (formData) => async (dispatch) => {
   const config = {
@@ -76,6 +90,20 @@ export const addPost = (formData) => async (dispatch) => {
 
     dispatch({ type: ADD_POST, payload: res.data });
     dispatch(setAlert("Post Added!", "success"));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+//get post
+export const getPost = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/posts/${id}`);
+
+    dispatch({ type: GET_POST, payload: res.data });
   } catch (err) {
     dispatch({
       type: POST_ERROR,
