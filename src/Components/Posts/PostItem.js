@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import { avatarDisplay } from "../../Utilities/AvatarDisplay";
-import { addLike, removeLike } from "../../actions/post";
+import { addLike, removeLike, deletePost } from "../../actions/post";
 import { deleteButton } from "../../Emotion styles/InputButton";
 
 const postWrapper = css`
@@ -53,6 +53,7 @@ const likeBtn = css`
 const PostItem = ({
   addLike,
   removeLike,
+  deletePost,
   auth,
   post: { _id, text, name, likes, comments, user, date, avatar },
 }) => {
@@ -95,17 +96,21 @@ const PostItem = ({
         <div css={likeBtn}>
           <i className="fas fa-thumbs-down" onClick={(e) => removeLike(_id)} />
         </div>
+
+        {!auth.loading && user === auth.user._id && (
+          <div>
+            <div css={deleteButton} onClick={(e) => deletePost(_id)}>
+              {" "}
+              X{" "}
+            </div>
+          </div>
+        )}
+        <Link to={`/posts/${_id}`}>
+          {" "}
+          Discussion:{" "}
+          {comments.length > 0 && <span>We have comments to work with</span>}
+        </Link>
       </div>
-      <Link to={`/posts/${_id}`}>
-        {" "}
-        Discussion:{" "}
-        {comments.length > 0 && <span>We have comments to work with</span>}
-      </Link>
-      {!auth.loading && user === auth.user._id && (
-        <div>
-          <div css={deleteButton}> X </div>
-        </div>
-      )}
     </div>
   );
 };
@@ -113,8 +118,12 @@ const PostItem = ({
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({ auth: state.auth });
 
-export default connect(mapStateToProps, { addLike, removeLike })(PostItem);
+export default connect(mapStateToProps, { addLike, removeLike, deletePost })(
+  PostItem
+);
