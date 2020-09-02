@@ -9,6 +9,7 @@ import PostItem from "../Posts/PostItem";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import { inputButton } from "../../Emotion styles/InputButton";
+import CommentItem from "./CommentItem";
 
 import CommentForm from "./CommentForm";
 
@@ -26,6 +27,11 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
         {" "}
         Back to Posts{" "}
       </Link>
+      <div>
+        {post.comments.map((comment) => (
+          <CommentItem key={comment._id} comment={comment} postId={post._id} />
+        ))}
+      </div>
     </Fragment>
   );
 };
