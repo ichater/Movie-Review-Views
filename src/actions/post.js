@@ -66,19 +66,6 @@ export const deletePost = (postId) => async (dispatch) => {
   }
 };
 
-export const getPost = () => async (dispatch) => {
-  try {
-    const res = await axios.get("/posts");
-
-    dispatch({ type: GET_POST, payload: res.data });
-  } catch (err) {
-    dispatch({
-      type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
-  }
-};
-
 //add post
 export const addPost = (formData) => async (dispatch) => {
   const config = {
