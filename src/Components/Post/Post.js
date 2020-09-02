@@ -1,18 +1,30 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addPost } from "../../actions/post";
 import Spinner from "../layout/Spinner";
+import { Link } from "react-router-dom";
+import { getPost } from "../../actions/post";
+import PostItem from "../Posts/PostItem";
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { getPost } from "../../actions/post";
+import { inputButton } from "../../Emotion styles/InputButton";
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
   }, [getPost]);
-  return <div>post</div>;
+  return loading || post === null ? (
+    <Spinner />
+  ) : (
+    <Fragment>
+      <PostItem post={post} showActions={false} />
+      <Link to="/posts" css={inputButton}>
+        {" "}
+        Back{" "}
+      </Link>
+    </Fragment>
+  );
 };
 
 Post.propTypes = {

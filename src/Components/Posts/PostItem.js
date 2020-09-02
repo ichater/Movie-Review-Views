@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { deleteButton } from "../../Emotion styles/InputButton";
 import { avatarDisplay } from "../../Utilities/AvatarDisplay";
 import { addLike, removeLike, deletePost } from "../../actions/post";
-import { deleteButton } from "../../Emotion styles/InputButton";
 
 const postWrapper = css`
   width: 60%;
@@ -56,6 +56,7 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, name, likes, comments, user, date, avatar },
+  showActions,
 }) => {
   return (
     <div css={postWrapper}>
@@ -82,37 +83,50 @@ const PostItem = ({
       <div>
         Date: <Moment format="DD/MM/YYYY">{date}</Moment>
       </div>
-      <div
-        css={css`
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-        `}
-      >
-        <div css={likeBtn}>
-          <i className="fas fa-thumbs-up" onClick={(e) => addLike(_id)} />{" "}
-          <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-        </div>
-        <div css={likeBtn}>
-          <i className="fas fa-thumbs-down" onClick={(e) => removeLike(_id)} />
-        </div>
-
-        {!auth.loading && user === auth.user._id && (
-          <div>
-            <div css={deleteButton} onClick={(e) => deletePost(_id)}>
-              {" "}
-              X{" "}
+      {showActions && (
+        <Fragment>
+          <div
+            css={css`
+              display: flex;
+              flex-direction: row;
+              gap: 10px;
+            `}
+          >
+            <div css={likeBtn}>
+              <i className="fas fa-thumbs-up" onClick={(e) => addLike(_id)} />{" "}
+              <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
             </div>
+            <div css={likeBtn}>
+              <i
+                className="fas fa-thumbs-down"
+                onClick={(e) => removeLike(_id)}
+              />
+            </div>
+
+            {!auth.loading && user === auth.user._id && (
+              <div>
+                <div css={deleteButton} onClick={(e) => deletePost(_id)}>
+                  {" "}
+                  X{" "}
+                </div>
+              </div>
+            )}
+            <Link to={`/posts/${_id}`}>
+              {" "}
+              Discussion:{" "}
+              {comments.length > 0 && (
+                <span>We have comments to work with</span>
+              )}
+            </Link>
           </div>
-        )}
-        <Link to={`/posts/${_id}`}>
-          {" "}
-          Discussion:{" "}
-          {comments.length > 0 && <span>We have comments to work with</span>}
-        </Link>
-      </div>
+        </Fragment>
+      )}
     </div>
   );
+};
+
+PostItem.defaultProps = {
+  showActions: true,
 };
 
 PostItem.propTypes = {
