@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getProfileById } from "../../actions/profile";
-import { InputButton } from "../../Emotion styles/InputButton";
+import { inputButton } from "../../Emotion styles/InputButton";
 
 import { ProfileBackgroundDisplayDiv } from "../../Emotion styles/ProfileBackgroundDiv";
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
@@ -31,17 +31,17 @@ const Profile = ({
         <div css={ProfileBackgroundDisplayDiv}>
           <h3>{profile.user.username}</h3>
           <ProfileContent profile={profile} />
-          <Link to="/profiles" css={InputButton}>
+          <Link to="/profiles" css={inputButton}>
             Back
           </Link>
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
               <Fragment>
-                <Link to="/edit-profile" css={InputButton}>
+                <Link to="/edit-profile" css={inputButton}>
                   Edit Profile
                 </Link>{" "}
-                <Link css={InputButton} to="/add-movie-quote">
+                <Link css={inputButton} to="/add-movie-quote">
                   <i className="fas fa-graduation-cap"></i>Add Movie Quote
                 </Link>
               </Fragment>

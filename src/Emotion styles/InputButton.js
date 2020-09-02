@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-export const InputButton = css`
+export const inputButton = css`
   width: fit-content;
   padding: 1rem;
   margin: auto;
@@ -10,6 +10,10 @@ export const InputButton = css`
   background-color: rgba(204, 255, 255, 0.5);
   border-radius: 10px;
   border: 1px solid rgb(204, 255, 255);
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(204, 204, 204);
+  }
 `;
 
 export const deleteButton = css`
