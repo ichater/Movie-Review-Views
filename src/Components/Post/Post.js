@@ -10,6 +10,8 @@ import PostItem from "../Posts/PostItem";
 import { css, jsx } from "@emotion/core";
 import { inputButton } from "../../Emotion styles/InputButton";
 
+import CommentForm from "./CommentForm";
+
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
@@ -19,6 +21,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
   ) : (
     <Fragment>
       <PostItem post={post} showActions={false} />
+      <CommentForm postId={post._id} />
       <Link to="/posts" css={inputButton}>
         {" "}
         Back to Posts{" "}
