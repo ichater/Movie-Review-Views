@@ -7,12 +7,15 @@ import {
 export default function MovieItem({ title, poster, year, type }) {
   return (
     <>
-      <StyledTableRow className="movie-table-row">
+      <StyledTableRow className="movie-table-row" data-test="movie-table-row">
         <StyledTableCell align="left">
           <input type="checkbox" data-testid="CheckBox" />
         </StyledTableCell>
-        <StyledTableCell className="movie-title-poster">
-          <h3 data-testid="movie-title">{title}</h3>
+        <StyledTableCell
+          className="movie-title-poster"
+          data-test="movie-title-poster"
+        >
+          <h3>{title}</h3>
           <img src={poster} alt="movie poster"></img>
         </StyledTableCell>
         <StyledTableCell align="center" data-testid="movie-year">
