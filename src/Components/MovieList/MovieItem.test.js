@@ -1,15 +1,11 @@
 import React from "react";
-import { shallow, render } from "enzyme";
+import { shallow } from "enzyme";
 import MovieItem from "./MovieItem";
+import { findByTestAttr } from "../../TestSupport/TestFunctions";
 
 const setup = (props = {}) => {
   const component = shallow(<MovieItem {...props} />);
   return component;
-};
-
-const findByTestAttr = (component, attr) => {
-  const wrapper = component.find(`[data-test='${attr}']`);
-  return wrapper;
 };
 
 describe("Movie Search page", () => {
