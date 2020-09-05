@@ -4,7 +4,7 @@ import MovieItem from "./MovieItem";
 
 const MovieTableBody = (props) => {
   const { sortedMovieList } = props;
-  console.log(sortedMovieList);
+
   return (
     <TableBody>
       {sortedMovieList?.map((movie) => {

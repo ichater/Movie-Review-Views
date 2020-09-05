@@ -28,7 +28,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                   <ProfileItem key={profile._id} profile={profile} />
                 ))
               ) : (
-                <h4>No Profiles Found </h4>
+                <h4 data-testid="No-Profiles-Header">No Profiles Found </h4>
               )}
             </div>
           </div>

@@ -5,7 +5,7 @@ import Navbar from "./Components/NavBar/Navbar";
 import LogIn from "./Components/LogIn/LogIn";
 import Register from "./Components/LogIn/Register";
 import MovieContainer from "./Components/MovieList/MovieContainer";
-import UserPageContainer from "./Components/User/UserPageContainer";
+// import UserPageContainer from "./Components/User/UserPageContainer";
 import Pofiles from "./Components/Profiles/Profiles";
 import Pofile from "./Components/Profile/Profile";
 import Posts from "./Components/Posts/Posts";
@@ -66,8 +66,6 @@ function App() {
             <PrivateRoute exact path="/posts/:id" component={Post} />
           </Switch>
         </section>
-
-        <Route path="/users/:id" exact component={UserPageContainer} />
         <Route path="/movielist/:id" exact component={UserMovieListContainer} />
       </Router>
     </Provider>

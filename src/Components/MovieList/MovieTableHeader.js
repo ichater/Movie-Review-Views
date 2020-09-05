@@ -10,7 +10,7 @@ export default function MovieTableHeader(props) {
           <>
             <StyledTableCell align="left">Select</StyledTableCell>
             <StyledTableCell
-              data-test="interactive-title"
+              data-testid="interactive-title"
               className="interactive-title"
               onClick={() => {
                 toggle();
@@ -31,7 +31,7 @@ export default function MovieTableHeader(props) {
             </StyledTableCell>
           </>
         ) : (
-          <StyledTableCell data-test="no-movie-response">
+          <StyledTableCell data-testid="no-movie-response">
             Select movies please
           </StyledTableCell>
         )}

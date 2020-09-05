@@ -17,7 +17,7 @@ describe("Movie Table display with props", () => {
 
   it("Should render title", () => {
     const wrapper = findByTestAttr(component, "interactive-title");
-    console.log(wrapper.debug());
+
     expect(wrapper.length).toBe(1);
   });
 });
