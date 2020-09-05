@@ -1,35 +1,42 @@
-import MovieItem from "./MovieItem";
 import React from "react";
-import ReactDOM from "react-dom";
-import {
-  render,
-  fireEvent,
-  waitFor,
-  screen,
-  getByText,
-  cleanup,
-} from "@testing-library/react";
+import { shallow, render } from "enzyme";
+import MovieItem from "./MovieItem";
 
-afterEach(cleanup);
+const setup = (props = {}) => {
+  const component = shallow(<MovieItem {...props} />);
+  return component;
+};
 
-it("renders the title", () => {
-  const { getByTestId } = render(<MovieItem title={"batman"} />);
-  expect(getByTestId("movie-title")).toHaveTextContent("batman");
+describe("Movie Search page", () => {
+  let component;
+  beforeEach(() => {
+    component = setup();
+  });
+
+  it("Should render without errors", () => {
+    const wrapper = component.find(".movie-table-row");
+    expect(wrapper.length).toBe(1);
+  });
+  it("Should render without errors", () => {
+    const wrapper = component.find(".movie-title-poster");
+    expect(wrapper.length).toBe(1);
+  });
 });
 
-it("renders missing year message when year not provided", () => {
-  const { getByTestId } = render(<MovieItem />);
-  expect(getByTestId("movie-year")).toHaveTextContent("No year avalible");
-});
+// describe("experimenting with non shallow", () => {
+// it("Should render without errors", () => {
+//   const searchedMovieProps = {
+//     id: "tt0093177",
+//     poster:
+//       "https://m.media-amazon.com/images/M/MV5BMTkyNzc4NjkwNV5BMl5BanBnXkFtZTgwNzI2Mjc1MDE@._V1_SX300.jpg",
+//     title: "Hellraiser",
+//     type: "movie",
+//     year: 1987,
+//   };
 
-it("Expect checkbox not to be checked", () => {
-  const { getByTestId } = render(<MovieItem />);
-  expect(getByTestId("CheckBox")).not.toBeChecked();
-});
-
-it("Expect checkbox to check on click", () => {
-  const { getByTestId } = render(<MovieItem />);
-
-  fireEvent.click(screen.getByTestId("CheckBox"));
-  expect(getByTestId("CheckBox")).toBeChecked();
-});
+//   const component = shallow(<MovieItem {...searchedMovieProps} />);
+//   console.log(component.debug());
+//   const wrapper = component.find("Hellraiser");
+//   expect(wrapper.length).toBe(1);
+// });
+// });

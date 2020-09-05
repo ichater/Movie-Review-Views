@@ -11,10 +11,7 @@ export default function MovieItem({ title, poster, year, type }) {
         <StyledTableCell align="left">
           <input type="checkbox" data-testid="CheckBox" />
         </StyledTableCell>
-        <StyledTableCell
-          className="movie-title-poster"
-          data-testid="movie-title-poster"
-        >
+        <StyledTableCell className="movie-title-poster">
           <h3 data-testid="movie-title">{title}</h3>
           <img src={poster} alt="movie poster"></img>
         </StyledTableCell>
