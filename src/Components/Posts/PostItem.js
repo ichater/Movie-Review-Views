@@ -23,7 +23,6 @@ const avatarNameWrapper = css`
   flex-direction: column;
   width: content;
   width: 10%;
-
   box-sizing: border-box;
 `;
 
@@ -50,7 +49,7 @@ const likeBtn = css`
     cursor: pointer;
   }
 `;
-const PostItem = ({
+export const PostItem = ({
   addLike,
   removeLike,
   deletePost,
