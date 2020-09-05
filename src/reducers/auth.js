@@ -9,7 +9,7 @@ import {
   DELETE_ACCOUNT,
 } from "../actions/types";
 
-const initialState = {
+export const initialState = {
   token: localStorage.getItem("token "),
   isAuthenticated: null,
   loading: true,
@@ -30,6 +30,7 @@ export default function (state = initialState, action) {
     case LOGIN_SUCCESS:
       //if its a "register success" we're setting the token
       localStorage.setItem("token", payload.token);
+      console.log(payload);
       return {
         ...state,
         ...payload,
