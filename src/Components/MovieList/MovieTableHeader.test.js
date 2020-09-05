@@ -1,24 +1,36 @@
-import MovieTableHeader from "./MovieTableHeader";
-
 import React from "react";
-import ReactDOM from "react-dom";
-import { render, cleanup } from "@testing-library/react";
+import { shallow } from "enzyme";
+import MovieTableHeader from "./MovieTableHeader";
+import { findByTestAttr } from "../../TestSupport/TestFunctions";
 
-afterEach(cleanup);
+const setup = (props = {}) => {
+  const component = shallow(<MovieTableHeader />);
+  return component;
+};
 
-it("renders Select movies please", () => {
-  const { getByTestId } = render(<MovieTableHeader isPopulated={0} />);
-  expect(getByTestId("no-movie-response")).toHaveTextContent(
-    "Select movies please"
-  );
+describe("Movie Table display with props", () => {
+  let component;
+  beforeEach(() => {
+    const props = {
+      isPopulated: true,
+    };
+    component = setup(props);
+  });
+
+  it("Should render title", () => {
+    const wrapper = findByTestAttr(component, "interactive-title");
+    expect(wrapper.length).toBe(1);
+  });
 });
 
-it("When there are no movies to show 'select movies please' is visible", () => {
-  const { getByTestId } = render(<MovieTableHeader isPopulated={false} />);
-  expect(getByTestId("no-movie-response")).toBeVisible();
-});
+describe("Movie Table display without props", () => {
+  let component;
+  beforeEach(() => {
+    component = setup();
+  });
 
-it("interactive table header visible", () => {
-  const { getByTestId } = render(<MovieTableHeader isPopulated={1} />);
-  expect(getByTestId("interactive-title")).toBeVisible();
+  it("Should render title", () => {
+    const wrapper = findByTestAttr(component, "no-movie-response");
+    expect(wrapper.length).toBe(1);
+  });
 });

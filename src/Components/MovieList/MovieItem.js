@@ -15,10 +15,10 @@ export default function MovieItem({ title, poster, year, type }) {
           className="movie-title-poster"
           data-test="movie-title-poster"
         >
-          <h3>{title}</h3>
+          <h3 data-test="movie-title">{title}</h3>
           <img src={poster} alt="movie poster"></img>
         </StyledTableCell>
-        <StyledTableCell align="center" data-testid="movie-year">
+        <StyledTableCell align="center" data-test="movie-year">
           {year ? year : "No year avalible"}
         </StyledTableCell>
         <StyledTableCell align="center" data-testid="movie-type">

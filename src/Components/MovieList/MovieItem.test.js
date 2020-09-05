@@ -24,20 +24,40 @@ describe("Movie Search page", () => {
   });
 });
 
-// describe("experimenting with non shallow", () => {
-//   it("Should render without errors", () => {
-//     const searchedMovieProps = {
-//       id: "tt0093177",
-//       poster:
-//         "https://m.media-amazon.com/images/M/MV5BMTkyNzc4NjkwNV5BMl5BanBnXkFtZTgwNzI2Mjc1MDE@._V1_SX300.jpg",
-//       title: "Hellraiser",
-//       type: "movie",
-//       year: 1987,
-//     };
+describe("Movie table render both with and without props", () => {
+  describe("has props", () => {
+    let wrapper;
+    beforeEach(() => {
+      const props = {
+        id: "tt0093177",
+        poster:
+          "https://m.media-amazon.com/images/M/MV5BMTkyNzc4NjkwNV5BMl5BanBnXkFtZTgwNzI2Mjc1MDE@._V1_SX300.jpg",
+        title: "Hellraiser",
+        type: "movie",
+        year: 1987,
+      };
+      wrapper = setup(props);
+    });
+    it("renders without errors", () => {
+      const component = findByTestAttr(wrapper, "movie-title");
+      expect(component.length).toBe(1);
+    });
+    it("should render a year", () => {
+      const component = findByTestAttr(wrapper, "movie-year");
+      console.log(component.text());
+      expect(component.text()).toBe("1987");
+    });
+  });
 
-//     const component = shallow(<MovieItem {...searchedMovieProps} />);
-//     console.log(component.debug());
-//     const wrapper = component.find(`[data-test='movie-title']`);
-//     expect(wrapper.text()).to.equal("Hellraiser");
-//   });
-// });
+  describe("has no props", () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = setup();
+    });
+
+    it("should not render a year", () => {
+      const component = findByTestAttr(wrapper, "movie-year");
+      expect(component.text()).toBe("No year avalible");
+    });
+  });
+});
