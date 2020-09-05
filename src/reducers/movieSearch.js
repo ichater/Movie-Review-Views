@@ -1,6 +1,6 @@
 import { FETCH_MOVIES_SUCCESS, FETCH_MOVIES_ERROR } from "../actions/types";
 
-const initialState = {
+export const initialState = {
   items: [],
 };
 
@@ -21,7 +21,7 @@ export default function (state = initialState, { type, payload }) {
   }
 }
 
-const transformOmdbData = (data) => {
+export const transformOmdbData = (data) => {
   if (data.Response === "False") {
     return [];
   }

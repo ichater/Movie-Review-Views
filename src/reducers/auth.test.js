@@ -1,13 +1,9 @@
 import auth, { initialState } from "./auth";
 import {
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  USER_LOADED,
-  AUTH_ERROR,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
-  DELETE_ACCOUNT,
 } from "../actions/types";
 
 describe("Testing the Auth Reducer", () => {
