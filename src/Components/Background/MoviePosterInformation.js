@@ -20,6 +20,7 @@ export default function MoviePosterInformation({ backgroundMovie }) {
   return (
     <div className="background-movie-wrapper">
       <div
+        data-testid={backgroundMovie.poster}
         className={
           movieInformation
             ? "background-movie-title-reveal"
@@ -42,6 +43,7 @@ export default function MoviePosterInformation({ backgroundMovie }) {
                 ...transitionStyles[state],
               }}
               className="background-movie-title"
+              // data-testid={backgroundMovie.poster}
             >
               {backgroundMovie.title} ({backgroundMovie.year})
             </span>
