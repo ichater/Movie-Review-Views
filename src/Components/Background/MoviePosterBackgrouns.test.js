@@ -8,35 +8,24 @@ describe("testing movie poster background", () => {
     const component = shallow(<MoviePosterBackground {...props} />);
     return component;
   };
+  const backgroundMovie = {
+    title: "Once upon a time in America",
+    poster: "once-upon-a-time-in-america-1530579166.jpg",
+    year: 1984,
+  };
   describe("correct movie poster is rendered", () => {
     let wrapper;
     beforeEach(() => {
-      const backgroundMovie = {
-        title: "Once upon a time in America",
-        poster: "once-upon-a-time-in-america-1530579166.jpg",
-        year: 1984,
-      };
       const props = {
         backgroundMovie,
       };
       wrapper = setup(props);
     });
     it("Should render without errors", () => {
-      const component = findByTestAttr(
-        wrapper,
-        "once-upon-a-time-in-america-1530579166.jpg"
-      );
-
-      expect(component.length).toBe(1);
-    });
-    it("should return a new poster after 10 seconds", () => {
-      const component = findByTestAttr(
-        wrapper,
-        "once-upon-a-time-in-america-1530579166.jpg"
-      );
-      setTimeout(() => {
-        expect(component.length).toBe(0);
-      }, 11000);
+      expect(wrapper.find("img").props().src).toEqual(backgroundMovie.poster);
+      expect(
+        wrapper.find("MoviePosterInformation").props().backgroundMovie
+      ).toEqual(backgroundMovie);
     });
   });
 });

@@ -17,7 +17,6 @@ export function LogIn({ login, isAuthenticated }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(email + password);
     login(email, password);
   };
 
@@ -27,7 +26,7 @@ export function LogIn({ login, isAuthenticated }) {
   return (
     <div className="user-form-group_wrapper">
       {" "}
-      <form action="/register" method="POST" onSubmit={(e) => onSubmit(e)}>
+      <form action="/register" method="POST" onSubmit={onSubmit}>
         <div className="user-form-group">
           <label className="user-label" for="userName">
             Email:{" "}
@@ -38,7 +37,7 @@ export function LogIn({ login, isAuthenticated }) {
             id="email"
             name="email"
             value={email}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <div className="user-form-group">
@@ -51,7 +50,7 @@ export function LogIn({ login, isAuthenticated }) {
             id="password"
             name="password"
             value={password}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <input className="login-register-btn" type="submit" value="Log in" />

@@ -26,11 +26,7 @@ export default function MoviePosterInformation({ backgroundMovie }) {
             ? "background-movie-title-reveal"
             : "background-movie-title-reveal_faded"
         }
-        onClick={() =>
-          movieInformation
-            ? setMovieInformation(false)
-            : setMovieInformation(true)
-        }
+        onClick={() => setMovieInformation(!movieInformation)}
       >
         {movieInformation ? "Hide Movie Details" : "View Movie Details"}
       </div>

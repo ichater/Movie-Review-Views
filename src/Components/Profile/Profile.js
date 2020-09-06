@@ -23,6 +23,14 @@ const Profile = ({
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
+  const canEditProfile = () => {
+    return (
+      auth.isAuthenticated &&
+      auth.loading === false &&
+      auth.user._id === profile.user._id
+    );
+  };
+
   return (
     <Fragment>
       {profile === null || loading ? (
@@ -34,18 +42,16 @@ const Profile = ({
           <Link to="/profiles" css={inputButton}>
             Back
           </Link>
-          {auth.isAuthenticated &&
-            auth.loading === false &&
-            auth.user._id === profile.user._id && (
-              <Fragment>
-                <Link to="/edit-profile" css={inputButton}>
-                  Edit Profile
-                </Link>{" "}
-                <Link css={inputButton} to="/add-movie-quote">
-                  <i className="fas fa-graduation-cap"></i>Add Movie Quote
-                </Link>
-              </Fragment>
-            )}
+          {canEditProfile() && (
+            <Fragment>
+              <Link to="/edit-profile" css={inputButton}>
+                Edit Profile
+              </Link>{" "}
+              <Link css={inputButton} to="/add-movie-quote">
+                <i className="fas fa-graduation-cap"></i>Add Movie Quote
+              </Link>
+            </Fragment>
+          )}
           <QuoteDisplay filmQuotes={profile.filmQuotes} />
         </div>
       )}
