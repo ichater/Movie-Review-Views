@@ -5,7 +5,7 @@ export default function MoviePosterBackground({ backgroundMovie }) {
   return (
     <>
       <img
-        data-testid="movie-poster-background"
+        data-testid={backgroundMovie.poster}
         className="movie-poster-background"
         src={require(`../../CSS/images/${backgroundMovie.poster}`)}
         alt={backgroundMovie.title}

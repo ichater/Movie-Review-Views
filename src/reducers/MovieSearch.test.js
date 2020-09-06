@@ -1,5 +1,5 @@
 import { FETCH_MOVIES_SUCCESS, FETCH_MOVIES_ERROR } from "../actions/types";
-import MovieSearch, { transformOmdbData, initialState } from "./movieSearch";
+import MovieSearch, { initialState } from "./movieSearch";
 
 describe("Testing the MovieSearch reducer", () => {
   describe("MovieSearch reducer with FETCH_MOVIES_SUCCESS", () => {
@@ -32,6 +32,16 @@ describe("Testing the MovieSearch reducer", () => {
           },
         ],
       });
+    });
+  });
+  describe("MovieSearch reducer with FETCH_MOVIES_ERROR", () => {
+    it("search returns nothing", () => {
+      const action = {
+        type: FETCH_MOVIES_ERROR,
+        payload: [],
+      };
+      const result = MovieSearch(initialState, action);
+      expect(result).toEqual({ items: [] });
     });
   });
 });
