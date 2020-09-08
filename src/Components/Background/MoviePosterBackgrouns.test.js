@@ -22,10 +22,16 @@ describe("testing movie poster background", () => {
       wrapper = setup(props);
     });
     it("Should render without errors", () => {
+      const component = findByTestAttr(
+        wrapper,
+        "once-upon-a-time-in-america-1530579166.jpg"
+      );
+
       expect(wrapper.find("img").props().src).toEqual(backgroundMovie.poster);
+
       expect(
-        wrapper.find("MoviePosterInformation").props().backgroundMovie
-      ).toEqual(backgroundMovie);
+        wrapper.find("MoviePosterInformation").props().backgroundMovie.title
+      ).toEqual(backgroundMovie.title);
     });
   });
 });

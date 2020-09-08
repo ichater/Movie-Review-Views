@@ -7,7 +7,7 @@ import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
 import FilmQuotes from "./FilmQuotes";
 
-const Dashboard = ({
+export const Dashboard = ({
   getCurrentProfile,
   auth: { user },
   profile: { profile, loading },
@@ -21,7 +21,7 @@ const Dashboard = ({
     return profile.filmQuotes > 0 ? (
       <FilmQuotes filmQuotes={profile.filmQuotes} />
     ) : (
-      <p>No film Quotes to Display</p>
+      <p data-testid="no-film">No film Quotes to Display</p>
     );
   };
 
