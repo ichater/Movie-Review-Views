@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { css, jsx } from "@emotion/core";
 import { avatarDisplay } from "../../Utilities/AvatarDisplay";
 import Moment from "react-moment";
-import { deleteButton } from "../../Emotion styles/InputButton";
+import { DeleteButton } from "../../Emotion styles/InputButton";
 import { deleteComment } from "../../actions/post";
 
 const avatarNameWrapper = css`
@@ -50,9 +50,9 @@ const CommentItem = ({
         <Moment format="DD/MM/YYYY">{date}</Moment>
       </div>
       {!auth.loading && user === auth.user._id && (
-        <div css={deleteButton} onClick={(e) => deleteComment(postId, _id)}>
+        <DeleteButton onClick={(e) => deleteComment(postId, _id)}>
           X
-        </div>
+        </DeleteButton>
       )}
     </div>
   );

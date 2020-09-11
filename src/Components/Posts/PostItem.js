@@ -6,7 +6,9 @@ import { connect } from "react-redux";
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { deleteButton } from "../../Emotion styles/InputButton";
+
+import styled from "@emotion/styled";
+import { DeleteButton } from "../../Emotion styles/InputButton";
 import { avatarDisplay } from "../../Utilities/AvatarDisplay";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 
@@ -49,6 +51,21 @@ const likeBtn = css`
     cursor: pointer;
   }
 `;
+
+// const deleteButton = styled.div`
+//   width: fit-content;
+//   padding: 3px 5px;
+
+//   align-items: center;
+//   background-color: rgb(255, 77, 77);
+//   color: white;
+//   border-radius: 10px;
+//   border: 1px solid rgb(204, 255, 255);
+//   &:hover {
+//     cursor: pointer;
+//     background-color: rgb(204, 0, 0);
+//   }
+// `;
 export const PostItem = ({
   addLike,
   removeLike,
@@ -104,10 +121,10 @@ export const PostItem = ({
 
             {!auth.loading && user === auth.user._id && (
               <div>
-                <div css={deleteButton} onClick={(e) => deletePost(_id)}>
+                <DeleteButton onClick={(e) => deletePost(_id)}>
                   {" "}
                   X{" "}
-                </div>
+                </DeleteButton>
               </div>
             )}
             <Link to={`/posts/${_id}`}>

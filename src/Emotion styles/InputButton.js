@@ -1,6 +1,7 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import styled from "@emotion/styled";
 
 export const inputButton = css`
   width: fit-content;
@@ -16,7 +17,7 @@ export const inputButton = css`
   }
 `;
 
-export const deleteButton = css`
+export const DeleteButton = styled.section`
   width: fit-content;
   padding: 3px 5px;
 
