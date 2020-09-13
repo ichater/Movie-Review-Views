@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { css, jsx } from "@emotion/core";
 
 import styled from "@emotion/styled";
-import { DeleteButton } from "../../Emotion styles/InputButton";
+import { DeleteButton } from "../../Emotion styles/DeleteButton";
 import { avatarDisplay } from "../../Utilities/AvatarDisplay";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 
